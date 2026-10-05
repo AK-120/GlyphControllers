@@ -1,0 +1,20 @@
+{
+ "schema": 1,
+ "animations": {
+  "notification_ping": {
+   "label": "Ping",
+   "role": "notification",
+   "type": "procedural",
+   "generator": "ripple",
+   "loop": false,
+   "durationMs": 1600,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "rings": 2,
+    "maxRadius": 6.5,
+    "thickness": 1.0
+   }
+  }
+ }
+}

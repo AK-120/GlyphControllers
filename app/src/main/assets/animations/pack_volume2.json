@@ -1,0 +1,1244 @@
+{
+ "schema": 1,
+ "animations": {
+  "volx_dial_classic": {
+   "label": "Dial · classic",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_classic__max"
+   }
+  },
+  "volx_dial_thin": {
+   "label": "Dial · thin",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "thickness": 0.7,
+    "radius": 5.6,
+    "core": false
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_thin__max"
+   }
+  },
+  "volx_dial_bold": {
+   "label": "Dial · bold",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "thickness": 1.5,
+    "radius": 5.0
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_bold__max"
+   }
+  },
+  "volx_dial_full": {
+   "label": "Dial · full circle",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 270,
+    "sweepDeg": 360
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_full__max"
+   }
+  },
+  "volx_dial_half": {
+   "label": "Dial · half arc",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 180,
+    "sweepDeg": 180,
+    "radius": 5.2
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_half__max"
+   }
+  },
+  "volx_dial_inner": {
+   "label": "Dial · inner ring",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 270,
+    "sweepDeg": 360,
+    "radius": 3.3
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_inner__max"
+   }
+  },
+  "volx_dial_snappy": {
+   "label": "Dial · snappy",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "smoothMs": 90,
+    "head": false
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_dial_snappy__max"
+   }
+  },
+  "volx_dial_max": {
+   "label": "Dial · 100%",
+   "type": "procedural",
+   "generator": "ring_gauge",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 270,
+    "sweepDeg": 360,
+    "fixed": 1,
+    "shimmer": true
+   }
+  },
+  "volx_eq_classic": {
+   "label": "Equalizer · classic",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 7,
+    "gap": 1
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_eq_classic__max"
+   }
+  },
+  "volx_eq_fine": {
+   "label": "Equalizer · fine",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 13,
+    "gap": 0,
+    "jitterSpeed": 1.4
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_eq_fine__max"
+   }
+  },
+  "volx_eq_wide": {
+   "label": "Equalizer · wide",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 4,
+    "barWidth": 2,
+    "gap": 1,
+    "peaks": false
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_eq_wide__max"
+   }
+  },
+  "volx_eq_mirror": {
+   "label": "Equalizer · mirror",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 7,
+    "gap": 1,
+    "mirror": true
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_eq_mirror__max"
+   }
+  },
+  "volx_eq_mirror_fine": {
+   "label": "Equalizer · mirror fine",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 13,
+    "gap": 0,
+    "mirror": true,
+    "jitterSpeed": 1.6
+   },
+   "variants": {
+    "max": "volx_eq_mirror_fine"
+   }
+  },
+  "volx_eq_lazy": {
+   "label": "Equalizer · lazy",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 5,
+    "gap": 2,
+    "jitterSpeed": 0.5,
+    "fallMs": 320
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_eq_lazy__max"
+   }
+  },
+  "volx_eq_max": {
+   "label": "Equalizer · 100%",
+   "type": "procedural",
+   "generator": "eq_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 7,
+    "gap": 1,
+    "fixed": 1,
+    "jitterSpeed": 1.8,
+    "shimmer": true
+   }
+  },
+  "volx_bloom_solid": {
+   "label": "Bloom · solid",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {},
+   "role": "volume",
+   "variants": {
+    "max": "volx_bloom_solid__max"
+   }
+  },
+  "volx_bloom_ring": {
+   "label": "Bloom · ring",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "hollow": true,
+    "thickness": 1.2
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_bloom_ring__max"
+   }
+  },
+  "volx_bloom_pulse": {
+   "label": "Bloom · pulse",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pulse": 0.55,
+    "pulseSpeed": 1.4
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_bloom_pulse__max"
+   }
+  },
+  "volx_bloom_slow": {
+   "label": "Bloom · slow",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 520,
+    "pulse": 0.2,
+    "pulseSpeed": 0.5
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_bloom_slow__max"
+   }
+  },
+  "volx_bloom_crisp": {
+   "label": "Bloom · crisp",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "glow": 0,
+    "pulse": 0,
+    "outline": 0
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_bloom_crisp__max"
+   }
+  },
+  "volx_bloom_max": {
+   "label": "Bloom · 100%",
+   "type": "procedural",
+   "generator": "radial_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "fixed": 1,
+    "pulse": 0.4,
+    "pulseSpeed": 1.6,
+    "shimmer": true
+   }
+  },
+  "volx_steps_4": {
+   "label": "Steps · 4",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 4,
+    "barWidth": 2,
+    "gap": 1
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_steps_4__max"
+   }
+  },
+  "volx_steps_6": {
+   "label": "Steps · 6",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 6,
+    "barWidth": 1,
+    "gap": 1
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_steps_6__max"
+   }
+  },
+  "volx_steps_3": {
+   "label": "Steps · chunky",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 3,
+    "barWidth": 3,
+    "gap": 1,
+    "minHeight": 3
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_steps_3__max"
+   }
+  },
+  "volx_steps_8": {
+   "label": "Steps · thin",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 8,
+    "barWidth": 1,
+    "gap": 0,
+    "minHeight": 1
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_steps_8__max"
+   }
+  },
+  "volx_steps_wave": {
+   "label": "Steps · wave",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 5,
+    "barWidth": 2,
+    "gap": 0,
+    "wave": 0.5
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_steps_wave__max"
+   }
+  },
+  "volx_steps_max": {
+   "label": "Steps · 100%",
+   "type": "procedural",
+   "generator": "signal_steps",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 5,
+    "barWidth": 2,
+    "gap": 0,
+    "fixed": 1,
+    "wave": 0.7,
+    "shimmer": true
+   }
+  },
+  "volx_speaker": {
+   "label": "Speaker · waves",
+   "type": "procedural",
+   "generator": "speaker",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 3
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_speaker__max"
+   }
+  },
+  "volx_speaker_two": {
+   "label": "Speaker · two waves",
+   "type": "procedural",
+   "generator": "speaker",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 2
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_speaker_two__max"
+   }
+  },
+  "volx_speaker_calm": {
+   "label": "Speaker · calm",
+   "type": "procedural",
+   "generator": "speaker",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 3,
+    "waveSpeed": 0.6,
+    "smoothMs": 380
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_speaker_calm__max"
+   }
+  },
+  "volx_speaker_max": {
+   "label": "Speaker · 100%",
+   "type": "procedural",
+   "generator": "speaker",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 3,
+    "fixed": 1,
+    "waveSpeed": 2.0,
+    "shimmer": true
+   }
+  },
+  "volx_spiral_classic": {
+   "label": "Spiral · classic",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 8
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_classic__max"
+   }
+  },
+  "volx_spiral_tail": {
+   "label": "Spiral · long tail",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 22,
+    "dim": 12
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_tail__max"
+   }
+  },
+  "volx_spiral_dots": {
+   "label": "Spiral · dotted",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 4,
+    "dim": 36
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_dots__max"
+   }
+  },
+  "volx_spiral_tight": {
+   "label": "Spiral · tight",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 1.2,
+    "trail": 10
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_tight__max"
+   }
+  },
+  "volx_spiral_wide": {
+   "label": "Spiral · wide arm",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 4.0,
+    "trail": 10
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_wide__max"
+   }
+  },
+  "volx_spiral_inward": {
+   "label": "Spiral · inward",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 8,
+    "reverse": true
+   },
+   "role": "volume",
+   "variants": {
+    "max": "volx_spiral_inward__max"
+   }
+  },
+  "volx_spiral_max": {
+   "label": "Spiral · 100%",
+   "type": "procedural",
+   "generator": "spiral_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "fixed": 1,
+    "chase": 34,
+    "trail": 14,
+    "shimmer": true
+   }
+  },
+  "volx_dial_classic__max": {
+   "label": "Dial · classic (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "base": "ring_gauge",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_thin__max": {
+   "label": "Dial · thin (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "thickness": 0.7,
+    "radius": 5.6,
+    "core": false,
+    "base": "ring_gauge",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_bold__max": {
+   "label": "Dial · bold (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "thickness": 1.5,
+    "radius": 5.0,
+    "base": "ring_gauge",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_full__max": {
+   "label": "Dial · full circle (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 270,
+    "sweepDeg": 360,
+    "base": "ring_gauge",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_half__max": {
+   "label": "Dial · half arc (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 180,
+    "sweepDeg": 180,
+    "radius": 5.2,
+    "base": "ring_gauge",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_inner__max": {
+   "label": "Dial · inner ring (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 270,
+    "sweepDeg": 360,
+    "radius": 3.3,
+    "base": "ring_gauge",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_dial_snappy__max": {
+   "label": "Dial · snappy (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "startDeg": 135,
+    "sweepDeg": 270,
+    "smoothMs": 90,
+    "head": false,
+    "base": "ring_gauge",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_eq_classic__max": {
+   "label": "Equalizer · classic (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 7,
+    "gap": 1,
+    "base": "eq_bars",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_eq_fine__max": {
+   "label": "Equalizer · fine (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 13,
+    "gap": 0,
+    "jitterSpeed": 1.4,
+    "base": "eq_bars",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_eq_wide__max": {
+   "label": "Equalizer · wide (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 4,
+    "barWidth": 2,
+    "gap": 1,
+    "peaks": false,
+    "base": "eq_bars",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_eq_mirror__max": {
+   "label": "Equalizer · mirror (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 7,
+    "gap": 1,
+    "mirror": true,
+    "base": "eq_bars",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_eq_lazy__max": {
+   "label": "Equalizer · lazy (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "bars": 5,
+    "gap": 2,
+    "jitterSpeed": 0.5,
+    "fallMs": 320,
+    "base": "eq_bars",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_bloom_solid__max": {
+   "label": "Bloom · solid (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "base": "radial_fill",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_bloom_ring__max": {
+   "label": "Bloom · ring (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "hollow": true,
+    "thickness": 1.2,
+    "base": "radial_fill",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_bloom_pulse__max": {
+   "label": "Bloom · pulse (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pulse": 0.55,
+    "pulseSpeed": 1.4,
+    "base": "radial_fill",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_bloom_slow__max": {
+   "label": "Bloom · slow (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 520,
+    "pulse": 0.2,
+    "pulseSpeed": 0.5,
+    "base": "radial_fill",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_bloom_crisp__max": {
+   "label": "Bloom · crisp (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "glow": 0,
+    "pulse": 0,
+    "outline": 0,
+    "base": "radial_fill",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_steps_4__max": {
+   "label": "Steps · 4 (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 4,
+    "barWidth": 2,
+    "gap": 1,
+    "base": "signal_steps",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_steps_6__max": {
+   "label": "Steps · 6 (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 6,
+    "barWidth": 1,
+    "gap": 1,
+    "base": "signal_steps",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_steps_3__max": {
+   "label": "Steps · chunky (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 3,
+    "barWidth": 3,
+    "gap": 1,
+    "minHeight": 3,
+    "base": "signal_steps",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_steps_8__max": {
+   "label": "Steps · thin (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 8,
+    "barWidth": 1,
+    "gap": 0,
+    "minHeight": 1,
+    "base": "signal_steps",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_steps_wave__max": {
+   "label": "Steps · wave (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "steps": 5,
+    "barWidth": 2,
+    "gap": 0,
+    "wave": 0.5,
+    "base": "signal_steps",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_speaker__max": {
+   "label": "Speaker · waves (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 3,
+    "base": "speaker",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_speaker_two__max": {
+   "label": "Speaker · two waves (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 2,
+    "base": "speaker",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_speaker_calm__max": {
+   "label": "Speaker · calm (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "waves": 3,
+    "waveSpeed": 0.6,
+    "smoothMs": 380,
+    "base": "speaker",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_classic__max": {
+   "label": "Spiral · classic (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 8,
+    "base": "spiral_fill",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_tail__max": {
+   "label": "Spiral · long tail (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 22,
+    "dim": 12,
+    "base": "spiral_fill",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_dots__max": {
+   "label": "Spiral · dotted (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 4,
+    "dim": 36,
+    "base": "spiral_fill",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_tight__max": {
+   "label": "Spiral · tight (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 1.2,
+    "trail": 10,
+    "base": "spiral_fill",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_wide__max": {
+   "label": "Spiral · wide arm (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 4.0,
+    "trail": 10,
+    "base": "spiral_fill",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  },
+  "volx_spiral_inward__max": {
+   "label": "Spiral · inward (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "pitch": 2.5,
+    "trail": 8,
+    "reverse": true,
+    "base": "spiral_fill",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0,
+    "introSec": 0.8,
+    "timeScale": 1.0
+   }
+  }
+ }
+}

@@ -1,0 +1,762 @@
+{
+ "schema": 1,
+ "frames": {},
+ "animations": {
+  "vol_liquid_calm": {
+   "label": "Liquid · calm",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 360,
+    "waveAmp": 0.5,
+    "waveSpeed": 0.4,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_liquid_calm__max"
+   }
+  },
+  "vol_liquid_wavy": {
+   "label": "Liquid · wavy",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 260,
+    "waveAmp": 1.6,
+    "waveSpeed": 0.9,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_liquid_wavy__max"
+   }
+  },
+  "vol_liquid_fast": {
+   "label": "Liquid · fast",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 110,
+    "waveAmp": 0.7,
+    "waveSpeed": 1.8,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_liquid_fast__max"
+   }
+  },
+  "vol_tank_flat": {
+   "label": "Tank · flat",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 200,
+    "waveAmp": 0.0,
+    "outline": 30,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_tank_flat__max"
+   }
+  },
+  "vol_tide_slow": {
+   "label": "Slow tide",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 700,
+    "waveAmp": 1.0,
+    "waveSpeed": 0.3,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_tide_slow__max"
+   }
+  },
+  "vol_choppy_sea": {
+   "label": "Choppy sea",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 220,
+    "waveAmp": 2.2,
+    "waveSpeed": 1.5,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_choppy_sea__max"
+   }
+  },
+  "vol_glow_ring": {
+   "label": "Glow ring",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.6,
+    "waveSpeed": 0.8,
+    "outline": 90,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_glow_ring__max"
+   }
+  },
+  "vol_bright_ring": {
+   "label": "Bright ring",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.0,
+    "outline": 150,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_bright_ring__max"
+   }
+  },
+  "vol_no_outline": {
+   "label": "No outline",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.8,
+    "waveSpeed": 0.8,
+    "outline": 0,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_no_outline__max"
+   }
+  },
+  "vol_spring": {
+   "label": "Spring",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 140,
+    "waveAmp": 1.2,
+    "waveSpeed": 2.4,
+    "outline": 26,
+    "shape": "disc"
+   },
+   "variants": {
+    "max": "vol_spring__max"
+   }
+  },
+  "vol_bar_hairline": {
+   "label": "Bar · hairline",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 160,
+    "outline": 40,
+    "barThickness": 1
+   },
+   "variants": {
+    "max": "vol_bar_hairline__max"
+   }
+  },
+  "vol_bar_slim": {
+   "label": "Bar · slim",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 180,
+    "outline": 36,
+    "barThickness": 2
+   },
+   "variants": {
+    "max": "vol_bar_slim__max"
+   }
+  },
+  "vol_bar_medium": {
+   "label": "Bar · medium",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 30,
+    "barThickness": 4
+   },
+   "variants": {
+    "max": "vol_bar_medium__max"
+   }
+  },
+  "vol_bar_wide": {
+   "label": "Bar · wide",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 30,
+    "barThickness": 7
+   },
+   "variants": {
+    "max": "vol_bar_wide__max"
+   }
+  },
+  "vol_bar_band": {
+   "label": "Bar · band",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 220,
+    "outline": 30,
+    "barThickness": 8
+   },
+   "variants": {
+    "max": "vol_bar_band__max"
+   }
+  },
+  "vol_bar_block": {
+   "label": "Bar · block",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 220,
+    "outline": 24,
+    "barThickness": 11
+   },
+   "variants": {
+    "max": "vol_bar_block__max"
+   }
+  },
+  "vol_bar_full": {
+   "label": "Bar · full height",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 240,
+    "outline": 24,
+    "barThickness": 13
+   },
+   "variants": {
+    "max": "vol_bar_full__max"
+   }
+  },
+  "vol_bar_glass": {
+   "label": "Bar · glass",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 100,
+    "barThickness": 5
+   },
+   "variants": {
+    "max": "vol_bar_glass__max"
+   }
+  },
+  "vol_bar_snappy": {
+   "label": "Bar · snappy",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 70,
+    "outline": 30,
+    "barThickness": 5
+   },
+   "variants": {
+    "max": "vol_bar_snappy__max"
+   }
+  },
+  "vol_bar_lazy": {
+   "label": "Bar · lazy",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 600,
+    "outline": 30,
+    "barThickness": 5
+   },
+   "variants": {
+    "max": "vol_bar_lazy__max"
+   }
+  },
+  "vol_liquid_calm__max": {
+   "label": "Liquid · calm (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 360,
+    "waveAmp": 0.5,
+    "waveSpeed": 0.4,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0
+   }
+  },
+  "vol_liquid_wavy__max": {
+   "label": "Liquid · wavy (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 260,
+    "waveAmp": 1.6,
+    "waveSpeed": 0.9,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0
+   }
+  },
+  "vol_liquid_fast__max": {
+   "label": "Liquid · fast (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 110,
+    "waveAmp": 0.7,
+    "waveSpeed": 1.8,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0
+   }
+  },
+  "vol_tank_flat__max": {
+   "label": "Tank · flat (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 200,
+    "waveAmp": 0.0,
+    "outline": 30,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0
+   }
+  },
+  "vol_tide_slow__max": {
+   "label": "Slow tide (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 700,
+    "waveAmp": 1.0,
+    "waveSpeed": 0.3,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0
+   }
+  },
+  "vol_choppy_sea__max": {
+   "label": "Choppy sea (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 220,
+    "waveAmp": 2.2,
+    "waveSpeed": 1.5,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0
+   }
+  },
+  "vol_glow_ring__max": {
+   "label": "Glow ring (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.6,
+    "waveSpeed": 0.8,
+    "outline": 90,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0
+   }
+  },
+  "vol_bright_ring__max": {
+   "label": "Bright ring (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.0,
+    "outline": 150,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0
+   }
+  },
+  "vol_no_outline__max": {
+   "label": "No outline (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 240,
+    "waveAmp": 0.8,
+    "waveSpeed": 0.8,
+    "outline": 0,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0
+   }
+  },
+  "vol_spring__max": {
+   "label": "Spring (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 140,
+    "waveAmp": 1.2,
+    "waveSpeed": 2.4,
+    "outline": 26,
+    "shape": "disc",
+    "base": "level_fill",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_hairline__max": {
+   "label": "Bar · hairline (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 160,
+    "outline": 40,
+    "barThickness": 1,
+    "base": "level_fill",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_slim__max": {
+   "label": "Bar · slim (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 180,
+    "outline": 36,
+    "barThickness": 2,
+    "base": "level_fill",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_medium__max": {
+   "label": "Bar · medium (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 30,
+    "barThickness": 4,
+    "base": "level_fill",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_wide__max": {
+   "label": "Bar · wide (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 30,
+    "barThickness": 7,
+    "base": "level_fill",
+    "effect": "ripple+sweep",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_band__max": {
+   "label": "Bar · band (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 220,
+    "outline": 30,
+    "barThickness": 8,
+    "base": "level_fill",
+    "effect": "burst+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.4,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_block__max": {
+   "label": "Bar · block (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 220,
+    "outline": 24,
+    "barThickness": 11,
+    "base": "level_fill",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 1.1,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_full__max": {
+   "label": "Bar · full height (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 240,
+    "outline": 24,
+    "barThickness": 13,
+    "base": "level_fill",
+    "effect": "burst+sweep",
+    "effectI": 190,
+    "effectPeriod": 1.3,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_glass__max": {
+   "label": "Bar · glass (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 100,
+    "barThickness": 5,
+    "base": "level_fill",
+    "effect": "burst+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_snappy__max": {
+   "label": "Bar · snappy (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 70,
+    "outline": 30,
+    "barThickness": 5,
+    "base": "level_fill",
+    "effect": "burst+flash",
+    "effectI": 160,
+    "effectPeriod": 0.9,
+    "fixed": 1.0
+   }
+  },
+  "vol_bar_lazy__max": {
+   "label": "Bar · lazy (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 600,
+    "outline": 30,
+    "barThickness": 5,
+    "base": "level_fill",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0
+   }
+  }
+ }
+}

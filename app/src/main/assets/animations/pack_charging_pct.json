@@ -1,0 +1,857 @@
+{
+ "schema": 1,
+ "animations": {
+  "pct_comet": {
+   "label": "Battery % · comet",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 2.4
+   },
+   "variants": {
+    "fast": "pct_comet_fast",
+    "full": "pct_comet__full"
+   }
+  },
+  "pct_comet_fast": {
+   "label": "Battery % · comet (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 1.14,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_twin": {
+   "label": "Battery % · twin comets",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 2,
+    "cometPeriod": 3.0,
+    "tail": 0.16
+   },
+   "variants": {
+    "fast": "pct_twin_fast",
+    "full": "pct_twin__full"
+   }
+  },
+  "pct_twin_fast": {
+   "label": "Battery % · twin comets (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 2,
+    "cometPeriod": 1.43,
+    "tail": 0.16,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_triple": {
+   "label": "Battery % · triple orbit",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 3,
+    "cometPeriod": 3.6,
+    "tail": 0.1
+   },
+   "variants": {
+    "fast": "pct_triple_fast",
+    "full": "pct_triple__full"
+   }
+  },
+  "pct_triple_fast": {
+   "label": "Battery % · triple orbit (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 3,
+    "cometPeriod": 1.71,
+    "tail": 0.1,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_flow": {
+   "label": "Battery % · energy flow",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "flow": 0.85,
+    "flowSpeed": 0.7
+   },
+   "variants": {
+    "fast": "pct_flow_fast",
+    "full": "pct_flow__full"
+   }
+  },
+  "pct_flow_fast": {
+   "label": "Battery % · energy flow (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "flow": 0.85,
+    "flowSpeed": 1.54,
+    "cometPeriod": 1.2,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_neon": {
+   "label": "Battery % · neon",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 2.8,
+    "flow": 0.6,
+    "flowSpeed": 0.6,
+    "pulse": 0.6,
+    "pulseSpeed": 0.6,
+    "thickness": 1.1,
+    "ringI": 215
+   },
+   "variants": {
+    "fast": "pct_neon_fast",
+    "full": "pct_neon__full"
+   }
+  },
+  "pct_neon_fast": {
+   "label": "Battery % · neon (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 1.33,
+    "flow": 0.6,
+    "flowSpeed": 1.32,
+    "pulse": 0.6,
+    "pulseSpeed": 1.08,
+    "thickness": 1.1,
+    "ringI": 215,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_dots12": {
+   "label": "Battery % · clock dots",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 12,
+    "comets": 0,
+    "pulse": 0.35,
+    "thickness": 1.0
+   },
+   "variants": {
+    "fast": "pct_dots12_fast",
+    "full": "pct_dots12__full"
+   }
+  },
+  "pct_dots12_fast": {
+   "label": "Battery % · clock dots (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 12,
+    "comets": 1,
+    "pulse": 0.35,
+    "thickness": 1.0,
+    "cometPeriod": 1.2,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_dots"
+   }
+  },
+  "pct_dots16": {
+   "label": "Battery % · dot chase",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 16,
+    "comets": 1,
+    "cometPeriod": 2.0,
+    "tail": 0.25,
+    "thickness": 1.0
+   },
+   "variants": {
+    "fast": "pct_dots16_fast",
+    "full": "pct_dots16__full"
+   }
+  },
+  "pct_dots16_fast": {
+   "label": "Battery % · dot chase (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 16,
+    "comets": 1,
+    "cometPeriod": 0.95,
+    "tail": 0.25,
+    "thickness": 1.0,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_dots"
+   }
+  },
+  "pct_tide": {
+   "label": "Battery % · tide",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 55,
+    "comets": 0,
+    "flow": 0.3,
+    "thickness": 0.8
+   },
+   "variants": {
+    "fast": "pct_tide_fast",
+    "full": "pct_tide__full"
+   }
+  },
+  "pct_tide_fast": {
+   "label": "Battery % · tide (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 55,
+    "comets": 1,
+    "flow": 0.3,
+    "thickness": 0.8,
+    "cometPeriod": 1.2,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_tide_comet": {
+   "label": "Battery % · tide + comet",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 45,
+    "comets": 1,
+    "cometPeriod": 2.6,
+    "thickness": 0.8
+   },
+   "variants": {
+    "fast": "pct_tide_comet_fast",
+    "full": "pct_tide_comet__full"
+   }
+  },
+  "pct_tide_comet_fast": {
+   "label": "Battery % · tide + comet (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 45,
+    "comets": 1,
+    "cometPeriod": 1.24,
+    "thickness": 0.8,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_breathe": {
+   "label": "Battery % · breathing",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "pulse": 1.0,
+    "pulseSpeed": 0.45,
+    "flow": 0.3,
+    "flowSpeed": 0.4
+   },
+   "variants": {
+    "fast": "pct_breathe_fast",
+    "full": "pct_breathe__full"
+   }
+  },
+  "pct_breathe_fast": {
+   "label": "Battery % · breathing (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "pulse": 1.0,
+    "pulseSpeed": 0.81,
+    "flow": 0.3,
+    "flowSpeed": 0.88,
+    "cometPeriod": 1.2,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_scan": {
+   "label": "Battery % · scanner",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 3.2,
+    "scan": 120,
+    "scanSpeed": 5.0
+   },
+   "variants": {
+    "fast": "pct_scan_fast",
+    "full": "pct_scan__full"
+   }
+  },
+  "pct_scan_fast": {
+   "label": "Battery % · scanner (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 1.52,
+    "scan": 120,
+    "scanSpeed": 9.0,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_minimal": {
+   "label": "Battery % · minimal",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "thickness": 0.6,
+    "ringI": 120,
+    "track": 14,
+    "digitI": 200
+   },
+   "variants": {
+    "fast": "pct_minimal_fast",
+    "full": "pct_minimal__full"
+   }
+  },
+  "pct_minimal_fast": {
+   "label": "Battery % · minimal (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "thickness": 0.6,
+    "ringI": 120,
+    "track": 14,
+    "digitI": 200,
+    "cometPeriod": 1.2,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_bold": {
+   "label": "Battery % · bold ring",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 3.0,
+    "thickness": 1.5,
+    "ringI": 170
+   },
+   "variants": {
+    "fast": "pct_bold_fast",
+    "full": "pct_bold__full"
+   }
+  },
+  "pct_bold_fast": {
+   "label": "Battery % · bold ring (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 1.43,
+    "thickness": 1.5,
+    "ringI": 170,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_calm": {
+   "label": "Battery % · calm",
+   "role": "charging",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 4.5,
+    "tail": 0.3,
+    "flow": 0.4,
+    "flowSpeed": 0.3,
+    "pulse": 0.3,
+    "pulseSpeed": 0.25,
+    "smoothMs": 1200
+   },
+   "variants": {
+    "fast": "pct_calm_fast",
+    "full": "pct_calm__full"
+   }
+  },
+  "pct_calm_fast": {
+   "label": "Battery % · calm (fast)",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 2.14,
+    "tail": 0.3,
+    "flow": 0.4,
+    "flowSpeed": 0.66,
+    "pulse": 0.3,
+    "pulseSpeed": 0.45,
+    "smoothMs": 1200,
+    "rollMs": 220
+   },
+   "variants": {
+    "full": "pct_full_glow"
+   }
+  },
+  "pct_full_glow": {
+   "label": "Battery % · full",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 2,
+    "cometPeriod": 2.0,
+    "flow": 0.5,
+    "pulse": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_full_dots": {
+   "label": "Battery % · full dots",
+   "type": "procedural",
+   "generator": "charge_percent",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 12,
+    "comets": 1,
+    "cometPeriod": 1.6,
+    "pulse": 0.5,
+    "thickness": 1.0,
+    "shimmer": true
+   }
+  },
+  "pct_comet__full": {
+   "label": "Battery % · comet (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 2.4,
+    "base": "charge_percent",
+    "effect": "orbit+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.7,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_twin__full": {
+   "label": "Battery % · twin comets (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 2,
+    "cometPeriod": 3.0,
+    "tail": 0.16,
+    "base": "charge_percent",
+    "effect": "ripple+sparkle",
+    "effectI": 140,
+    "effectPeriod": 1.8,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_triple__full": {
+   "label": "Battery % · triple orbit (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 3,
+    "cometPeriod": 3.6,
+    "tail": 0.1,
+    "base": "charge_percent",
+    "effect": "sweep+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_flow__full": {
+   "label": "Battery % · energy flow (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "flow": 0.85,
+    "flowSpeed": 0.7,
+    "base": "charge_percent",
+    "effect": "orbit+flash",
+    "effectI": 170,
+    "effectPeriod": 2.0,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_neon__full": {
+   "label": "Battery % · neon (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 2.8,
+    "flow": 0.6,
+    "flowSpeed": 0.6,
+    "pulse": 0.6,
+    "pulseSpeed": 0.6,
+    "thickness": 1.1,
+    "ringI": 215,
+    "base": "charge_percent",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 2.2,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_dots12__full": {
+   "label": "Battery % · clock dots (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 12,
+    "comets": 0,
+    "pulse": 0.35,
+    "thickness": 1.0,
+    "base": "charge_percent",
+    "effect": "negative+sparkle",
+    "effectI": 170,
+    "effectPeriod": 2.4,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_dots16__full": {
+   "label": "Battery % · dot chase (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "segments": 16,
+    "comets": 1,
+    "cometPeriod": 2.0,
+    "tail": 0.25,
+    "thickness": 1.0,
+    "base": "charge_percent",
+    "effect": "burst+sweep+orbit",
+    "effectI": 170,
+    "effectPeriod": 2.0,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_tide__full": {
+   "label": "Battery % · tide (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 55,
+    "comets": 0,
+    "flow": 0.3,
+    "thickness": 0.8,
+    "base": "charge_percent",
+    "effect": "flash+sparkle",
+    "effectI": 150,
+    "effectPeriod": 1.2,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_tide_comet__full": {
+   "label": "Battery % · tide + comet (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "tide": 45,
+    "comets": 1,
+    "cometPeriod": 2.6,
+    "thickness": 0.8,
+    "base": "charge_percent",
+    "effect": "orbit+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.7,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_breathe__full": {
+   "label": "Battery % · breathing (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "pulse": 1.0,
+    "pulseSpeed": 0.45,
+    "flow": 0.3,
+    "flowSpeed": 0.4,
+    "base": "charge_percent",
+    "effect": "ripple+sparkle",
+    "effectI": 140,
+    "effectPeriod": 1.8,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_scan__full": {
+   "label": "Battery % · scanner (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 3.2,
+    "scan": 120,
+    "scanSpeed": 5.0,
+    "base": "charge_percent",
+    "effect": "sweep+sparkle",
+    "effectI": 170,
+    "effectPeriod": 1.6,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_minimal__full": {
+   "label": "Battery % · minimal (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 0,
+    "thickness": 0.6,
+    "ringI": 120,
+    "track": 14,
+    "digitI": 200,
+    "base": "charge_percent",
+    "effect": "orbit+flash",
+    "effectI": 170,
+    "effectPeriod": 2.0,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  },
+  "pct_bold__full": {
+   "label": "Battery % · bold ring (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 3.0,
+    "thickness": 1.5,
+    "ringI": 170,
+    "base": "charge_percent",
+    "effect": "burst+ripple",
+    "effectI": 150,
+    "effectPeriod": 2.2,
+    "timeScale": 0.6,
+    "shimmer": true
+   }
+  },
+  "pct_calm__full": {
+   "label": "Battery % · calm (full)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "comets": 1,
+    "cometPeriod": 4.5,
+    "tail": 0.3,
+    "flow": 0.4,
+    "flowSpeed": 0.3,
+    "pulse": 0.3,
+    "pulseSpeed": 0.25,
+    "smoothMs": 1200,
+    "base": "charge_percent",
+    "effect": "negative+sparkle",
+    "effectI": 170,
+    "effectPeriod": 2.4,
+    "timeScale": 0.5,
+    "shimmer": true
+   }
+  }
+ }
+}

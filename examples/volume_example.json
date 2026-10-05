@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "animations": {
+    "volume_pulse": {
+      "label": "Volume pulse",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "disc",
+        "smoothMs": 240,
+        "waveAmp": 0.9,
+        "waveSpeed": 0.8,
+        "outline": 26,
+        "shimmer": false
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "volume_pulse_max": {
+      "label": "Volume pulse (100%)",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "disc",
+        "smoothMs": 240,
+        "waveAmp": 0.2,
+        "waveSpeed": 1.4,
+        "outline": 26,
+        "shimmer": true
+      }
+    },
+    "volume_bar": {
+      "label": "Volume bar",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 200,
+        "outline": 26,
+        "barThickness": 5
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "volume_bar_max": {
+      "label": "Volume bar (100%)",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 200,
+        "outline": 26,
+        "barThickness": 5,
+        "shimmer": true
+      }
+    }
+  }
+}

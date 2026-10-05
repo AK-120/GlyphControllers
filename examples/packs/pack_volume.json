@@ -1,0 +1,375 @@
+{
+  "schema": 1,
+  "frames": {
+  },
+  "animations": {
+    "vol_liquid_calm": {
+      "label": "Liquid \u00b7 calm",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 360,
+        "waveAmp": 0.5,
+        "waveSpeed": 0.4,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_liquid_wavy": {
+      "label": "Liquid \u00b7 wavy",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 260,
+        "waveAmp": 1.6,
+        "waveSpeed": 0.9,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_liquid_fast": {
+      "label": "Liquid \u00b7 fast",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 110,
+        "waveAmp": 0.7,
+        "waveSpeed": 1.8,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_tank_flat": {
+      "label": "Tank \u00b7 flat",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 200,
+        "waveAmp": 0.0,
+        "outline": 30,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_tide_slow": {
+      "label": "Slow tide",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 700,
+        "waveAmp": 1.0,
+        "waveSpeed": 0.3,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_choppy_sea": {
+      "label": "Choppy sea",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 220,
+        "waveAmp": 2.2,
+        "waveSpeed": 1.5,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_glow_ring": {
+      "label": "Glow ring",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 240,
+        "waveAmp": 0.6,
+        "waveSpeed": 0.8,
+        "outline": 90,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_bright_ring": {
+      "label": "Bright ring",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 240,
+        "waveAmp": 0.0,
+        "outline": 150,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_no_outline": {
+      "label": "No outline",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 240,
+        "waveAmp": 0.8,
+        "waveSpeed": 0.8,
+        "outline": 0,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_spring": {
+      "label": "Spring",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "smoothMs": 140,
+        "waveAmp": 1.2,
+        "waveSpeed": 2.4,
+        "outline": 26,
+        "shape": "disc"
+      },
+      "variants": {
+        "max": "volume_pulse_max"
+      }
+    },
+    "vol_bar_hairline": {
+      "label": "Bar \u00b7 hairline",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 160,
+        "outline": 40,
+        "barThickness": 1
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_slim": {
+      "label": "Bar \u00b7 slim",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 180,
+        "outline": 36,
+        "barThickness": 2
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_medium": {
+      "label": "Bar \u00b7 medium",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 200,
+        "outline": 30,
+        "barThickness": 4
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_wide": {
+      "label": "Bar \u00b7 wide",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 200,
+        "outline": 30,
+        "barThickness": 7
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_band": {
+      "label": "Bar \u00b7 band",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 220,
+        "outline": 30,
+        "barThickness": 8
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_block": {
+      "label": "Bar \u00b7 block",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 220,
+        "outline": 24,
+        "barThickness": 11
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_full": {
+      "label": "Bar \u00b7 full height",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 240,
+        "outline": 24,
+        "barThickness": 13
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_glass": {
+      "label": "Bar \u00b7 glass",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 200,
+        "outline": 100,
+        "barThickness": 5
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_snappy": {
+      "label": "Bar \u00b7 snappy",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 70,
+        "outline": 30,
+        "barThickness": 5
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    },
+    "vol_bar_lazy": {
+      "label": "Bar \u00b7 lazy",
+      "role": "volume",
+      "type": "procedural",
+      "generator": "level_fill",
+      "loop": true,
+      "fps": 30,
+      "brightness": 100,
+      "params": {
+        "shape": "bar",
+        "smoothMs": 600,
+        "outline": 30,
+        "barThickness": 5
+      },
+      "variants": {
+        "max": "volume_bar_max"
+      }
+    }
+  }
+}

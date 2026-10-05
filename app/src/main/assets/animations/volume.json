@@ -1,0 +1,114 @@
+{
+ "schema": 1,
+ "animations": {
+  "volume_pulse": {
+   "label": "Volume pulse",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "disc",
+    "smoothMs": 240,
+    "waveAmp": 0.9,
+    "waveSpeed": 0.8,
+    "outline": 26,
+    "shimmer": false
+   },
+   "variants": {
+    "max": "volume_pulse__max"
+   }
+  },
+  "volume_pulse_max": {
+   "label": "Volume pulse (100%)",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "disc",
+    "smoothMs": 240,
+    "waveAmp": 0.2,
+    "waveSpeed": 1.4,
+    "outline": 26,
+    "shimmer": true
+   }
+  },
+  "volume_bar": {
+   "label": "Volume bar",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 26,
+    "barThickness": 5
+   },
+   "variants": {
+    "max": "volume_bar__max"
+   }
+  },
+  "volume_bar_max": {
+   "label": "Volume bar (100%)",
+   "type": "procedural",
+   "generator": "level_fill",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 26,
+    "barThickness": 5,
+    "shimmer": true
+   }
+  },
+  "volume_pulse__max": {
+   "label": "Volume pulse (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "disc",
+    "smoothMs": 240,
+    "waveAmp": 0.9,
+    "waveSpeed": 0.8,
+    "outline": 26,
+    "shimmer": false,
+    "base": "level_fill",
+    "effect": "burst+sparkle+orbit",
+    "effectI": 170,
+    "effectPeriod": 1.5,
+    "fixed": 1.0
+   }
+  },
+  "volume_bar__max": {
+   "label": "Volume bar (max)",
+   "type": "procedural",
+   "generator": "boost",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "shape": "bar",
+    "smoothMs": 200,
+    "outline": 26,
+    "barThickness": 5,
+    "base": "level_fill",
+    "effect": "burst+negative",
+    "effectI": 170,
+    "effectPeriod": 1.8,
+    "fixed": 1.0
+   }
+  }
+ }
+}
