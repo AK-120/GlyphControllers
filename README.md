@@ -41,7 +41,7 @@ priority order (Volume › Charging › Notification is the default).
 - **Import your own animations** as JSON (frame-by-frame pictures or procedural generators), see [JSON format](#json-animation-format).
 - **Delete imported glyphs one at a time**: long-press an imported tile, confirm in a dialog that matches the app theme.
   Volume and charging glyphs take their companion "max / fast / full" variants with them.
-- **7 colour themes** (Nothing, Paper, Cyber, Amber, Mint, Violet, Mono) and 3 dot-matrix **logos** (Ring, G, Bolt) that change the launcher and status-bar icon.
+- **10 colour themes** (Nothing, Paper, Cyber, Amber, Mint, Violet, Mono, Sunset, Ocean, Terminal) and 3 dot-matrix **logos** (Ring, G, Bolt) that change the launcher and status-bar icon.
 - **Home-screen widget** mirroring the matrix; tap it for a **quick-setup sheet** (master switch, brightness, AOD picker).
 
 ### Always on
