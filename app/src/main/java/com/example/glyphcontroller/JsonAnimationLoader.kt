@@ -73,31 +73,41 @@ object JsonAnimationLoader {
         }
     }
 
-    /** An imported (user) animation file and the animation names it defines. */
-    data class UserFile(val name: String, val animations: List<String>)
+    private fun userJsonFiles(context: Context): List<File> = runCatching {
+        userDir(context).listFiles { f -> f.isFile && f.extension.equals("json", true) }?.sortedBy { it.name }
+    }.getOrNull() ?: emptyList()
 
-    /** Lists the imported JSON files in the user animation directory (bundled assets are never listed). */
-    fun listUserFiles(context: Context): List<UserFile> {
-        val files = runCatching {
-            userDir(context).listFiles { f -> f.isFile && f.extension.equals("json", true) }?.sortedBy { it.name }
-        }.getOrNull() ?: return emptyList()
-        return files.map { f ->
-            val names = runCatching {
-                val keys = JSONObject(f.readText()).optJSONObject("animations")?.keys()
-                if (keys == null) emptyList() else keys.asSequence().toList()
-            }.getOrDefault(emptyList())
-            UserFile(f.name, names)
+    /** Names of every animation defined in the imported (user) files. Bundled assets are never included. */
+    fun userAnimationNames(context: Context): Set<String> {
+        val out = HashSet<String>()
+        for (f in userJsonFiles(context)) {
+            runCatching {
+                JSONObject(f.readText()).optJSONObject("animations")?.keys()?.forEach { out += it }
+            }
         }
+        return out
     }
 
-    /** Deletes one imported file from the user animation directory. Returns an error message or null. */
-    fun deleteUserFile(context: Context, fileName: String): String? {
+    /**
+     * Deletes ONE imported animation by name. It is removed from the imported file that defines it; if that
+     * leaves the file with no animations, the file itself is removed. Returns an error message or null.
+     */
+    fun deleteUserAnimation(context: Context, name: String): String? {
         return try {
-            val dir = userDir(context).canonicalFile
-            val target = File(dir, fileName).canonicalFile
-            if (target.parentFile != dir) return "Refusing to delete outside the animations folder."
-            if (!target.exists()) return null
-            if (target.delete()) null else "Could not delete $fileName."
+            var found = false
+            for (f in userJsonFiles(context)) {
+                val root = runCatching { JSONObject(f.readText()) }.getOrNull() ?: continue
+                val anims = root.optJSONObject("animations") ?: continue
+                if (!anims.has(name)) continue
+                found = true
+                anims.remove(name)
+                if (anims.length() == 0) {
+                    if (!f.delete()) return "Could not delete ${f.name}."
+                } else {
+                    f.writeText(root.toString(2))
+                }
+            }
+            if (found) null else "'$name' is not an imported animation."
         } catch (t: Throwable) {
             "Delete failed: ${t.message}"
         }

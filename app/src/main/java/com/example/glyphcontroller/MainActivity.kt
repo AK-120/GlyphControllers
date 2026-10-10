@@ -38,7 +38,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.OutlinedButton
@@ -139,29 +138,6 @@ private fun GlyphRoot() {
             val err = JsonAnimationLoader.importFile(context, uri)
             if (err != null) GlyphRuntime.report(err) else GlyphRuntime.reloadLibrary()
         }
-    }
-
-    var pendingDelete by remember { mutableStateOf<JsonAnimationLoader.UserFile?>(null) }
-    pendingDelete?.let { uf ->
-        AlertDialog(
-            onDismissRequest = { pendingDelete = null },
-            title = { Text("Delete ${uf.name}?") },
-            text = {
-                Text(
-                    "This removes the imported file" +
-                        (if (uf.animations.isNotEmpty()) " and its animations (${uf.animations.joinToString(", ")})" else "") +
-                        ". Any slot using them falls back to a built-in animation."
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    val err = JsonAnimationLoader.deleteUserFile(context, uf.name)
-                    if (err != null) GlyphRuntime.report(err) else GlyphRuntime.reloadLibrary()
-                    pendingDelete = null
-                }) { Text("Delete", color = Color(0xFFFF8A8F)) }
-            },
-            dismissButton = { TextButton(onClick = { pendingDelete = null }) { Text("Cancel") } }
-        )
     }
 
     // If the switch is on but the service is not running (app was killed, device rebooted...), bring it back.
@@ -361,25 +337,6 @@ private fun GlyphRoot() {
                                     }
                                     OutlinedButton(onClick = { GlyphRuntime.reloadLibrary() }, modifier = Modifier.weight(1f)) {
                                         Text("Reload", fontSize = 12.sp)
-                                    }
-                                }
-                                // Re-read the folder whenever the library reloads (import / delete / reload).
-                                val userFiles = remember(library) { JsonAnimationLoader.listUserFiles(context) }
-                                if (userFiles.isNotEmpty()) {
-                                    Small("IMPORTED FILES")
-                                    userFiles.forEach { uf ->
-                                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                                            Column(Modifier.weight(1f)) {
-                                                Text(uf.name, color = Pal.text, fontSize = 13.sp, maxLines = 1)
-                                                Small(
-                                                    if (uf.animations.isEmpty()) "No animations found"
-                                                    else uf.animations.joinToString(", ")
-                                                )
-                                            }
-                                            TextButton(onClick = { pendingDelete = uf }) {
-                                                Text("Delete", color = Color(0xFFFF8A8F), fontSize = 12.sp)
-                                            }
-                                        }
                                     }
                                 }
                                 OutlinedButton(onClick = { openToysManager(context) }, modifier = Modifier.fillMaxWidth()) {

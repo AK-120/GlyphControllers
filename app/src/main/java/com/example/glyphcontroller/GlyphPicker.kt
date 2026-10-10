@@ -20,7 +20,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -36,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -152,6 +155,11 @@ fun GlyphPicker(
     var family by rememberSaveable(role) { mutableStateOf("") }          // "" = all
     var manual by remember { mutableStateOf<Float?>(null) }
 
+    val context = LocalContext.current
+    // Only glyphs that came from an imported file can be deleted; bundled ones never show the button.
+    val importedNames = remember(library) { JsonAnimationLoader.userAnimationNames(context) }
+    var confirmDelete by remember { mutableStateOf<GlyphAnimation?>(null) }
+
     val families = remember(all) { all.map { familyOf(it) }.distinct() }
     val shown = if (family.isEmpty() || family !in families) all else all.filter { familyOf(it) == family }
     val index = all.indexOfFirst { it.name == selected }
@@ -176,6 +184,28 @@ fun GlyphPicker(
         onSelect(list[(((if (i < 0) 0 else i) + d) % list.size + list.size) % list.size].name)
     }
 
+    confirmDelete?.let { a ->
+        AlertDialog(
+            onDismissRequest = { confirmDelete = null },
+            title = { Text("Delete \"${a.label}\"?") },
+            text = { Text("This removes only this imported glyph. Built-in glyphs and your other imports are not touched.") },
+            confirmButton = {
+                TextButton(onClick = {
+                    confirmDelete = null
+                    // move the selection to a neighbour first so no slot is left pointing at the deleted glyph
+                    if (selected == a.name) {
+                        val i = all.indexOfFirst { it.name == a.name }
+                        all.getOrNull(i + 1)?.takeIf { it.name != a.name }?.let { onSelect(it.name) }
+                            ?: all.getOrNull(i - 1)?.let { onSelect(it.name) }
+                    }
+                    val err = JsonAnimationLoader.deleteUserAnimation(context, a.name)
+                    if (err != null) GlyphRuntime.report(err) else GlyphRuntime.reloadLibrary()
+                }) { Text("Delete", color = Color(0xFFFF8A8F)) }
+            },
+            dismissButton = { TextButton(onClick = { confirmDelete = null }) { Text("Cancel") } }
+        )
+    }
+
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(title, color = Pal.text, fontSize = 14.sp)
@@ -194,7 +224,8 @@ fun GlyphPicker(
                 current, library[current.variants[topVariant]].takeIf { sweep }, n, sweep, sweepSec, sampleInput,
                 clock, manual, { manual = it },
                 onPrev = { step(-1) }, onNext = { step(1) },
-                onShuffle = { onSelect(all.random().name) }
+                onShuffle = { onSelect(all.random().name) },
+                onDelete = if (current.name in importedNames) ({ confirmDelete = current }) else null
             )
         }
 
@@ -227,7 +258,7 @@ fun GlyphPicker(
 private fun Stage(
     a: GlyphAnimation, top: GlyphAnimation?, n: Int, sweep: Boolean, sweepSec: Float, input: Float,
     clock: State<Float>, manual: Float?, onManual: (Float?) -> Unit,
-    onPrev: () -> Unit, onNext: () -> Unit, onShuffle: () -> Unit
+    onPrev: () -> Unit, onNext: () -> Unit, onShuffle: () -> Unit, onDelete: (() -> Unit)? = null
 ) {
     val live = remember(a.name, top?.name, n) { LiveThumb(a, top, n, input) }
     val px = remember(n) { IntArray(n * n) }
@@ -254,10 +285,11 @@ private fun Stage(
                 Text(a.label, color = Pal.text, fontSize = 17.sp, fontWeight = FontWeight.Bold, lineHeight = 20.sp)
                 Text(meta, color = Pal.dim, fontSize = 11.sp, fontFamily = FontFamily.Monospace)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    GChip("‹", false, onPrev)
-                    GChip("›", false, onNext)
-                    GChip("SHUFFLE", false, onShuffle)
+                    GChip("‹", false, onClick = onPrev)
+                    GChip("›", false, onClick = onNext)
+                    GChip("SHUFFLE", false, onClick = onShuffle)
                 }
+                if (onDelete != null) GChip("DELETE", false, danger = true, onClick = onDelete)
             }
         }
         if (sweep) {
