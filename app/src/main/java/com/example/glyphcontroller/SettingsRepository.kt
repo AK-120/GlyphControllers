@@ -30,6 +30,8 @@ data class GlyphSettings(
     val musicAodEnabled: Boolean = false,
     /** false = rotating disc only, no scrolling name. */
     val musicShowName: Boolean = true,
+    /** Picture shown between name scrolls. */
+    val musicStyle: MusicStyle = MusicStyle.DISC,
     /** Seconds the disc is shown between two scrolls of the name. */
     val musicNameEverySec: Int = 15,
 
@@ -73,6 +75,7 @@ private object K {
     val MUSIC_ENABLED = booleanPreferencesKey("music_aod_enabled")
     val MUSIC_SHOW_NAME = booleanPreferencesKey("music_show_name")
     val MUSIC_EVERY = intPreferencesKey("music_name_every_sec")
+    val MUSIC_STYLE = stringPreferencesKey("music_style")
     val VOL_ANIM = stringPreferencesKey("vol_anim")
     val VOL_SPEED = floatPreferencesKey("vol_speed")
     val VOL_DURATION = intPreferencesKey("vol_duration_ms")
@@ -115,6 +118,7 @@ class SettingsRepository(private val context: Context) {
             aodOnlyWhenScreenOff = this[K.AOD_ONLY_SCREEN_OFF] ?: d.aodOnlyWhenScreenOff,
             musicAodEnabled = this[K.MUSIC_ENABLED] ?: d.musicAodEnabled,
             musicShowName = this[K.MUSIC_SHOW_NAME] ?: d.musicShowName,
+            musicStyle = enumOrDefault(this[K.MUSIC_STYLE], d.musicStyle),
             musicNameEverySec = (this[K.MUSIC_EVERY] ?: d.musicNameEverySec).coerceIn(5, 60),
             volumeAnimation = this[K.VOL_ANIM] ?: d.volumeAnimation,
             volumeSpeed = (this[K.VOL_SPEED] ?: d.volumeSpeed).coerceIn(0.1f, 4f),
@@ -146,6 +150,7 @@ class SettingsRepository(private val context: Context) {
         this[K.MUSIC_ENABLED] = s.musicAodEnabled
         this[K.MUSIC_SHOW_NAME] = s.musicShowName
         this[K.MUSIC_EVERY] = s.musicNameEverySec
+        this[K.MUSIC_STYLE] = s.musicStyle.name
         this[K.VOL_ANIM] = s.volumeAnimation
         this[K.VOL_SPEED] = s.volumeSpeed
         this[K.VOL_DURATION] = s.volumeDurationMs
