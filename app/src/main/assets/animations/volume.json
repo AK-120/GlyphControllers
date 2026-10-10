@@ -109,6 +109,33 @@
     "effectPeriod": 1.8,
     "fixed": 1.0
    }
+  },
+  "volume_bars": {
+   "label": "Volume bars",
+   "role": "volume",
+   "type": "procedural",
+   "generator": "volume_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "smoothMs": 200
+   },
+   "variants": {
+    "max": "volume_bars_max"
+   }
+  },
+  "volume_bars_max": {
+   "label": "Volume bars (100%)",
+   "type": "procedural",
+   "generator": "volume_bars",
+   "loop": true,
+   "fps": 30,
+   "brightness": 100,
+   "params": {
+    "fixed": 1.0,
+    "jitterSpeed": 1.8
+   }
   }
  }
 }
