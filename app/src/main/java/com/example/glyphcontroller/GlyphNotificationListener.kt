@@ -10,6 +10,11 @@ import android.service.notification.StatusBarNotification
  * It never reads notification content; it only signals that something new arrived.
  */
 class GlyphNotificationListener : NotificationListenerService() {
+    /** Access was just granted / the listener (re)connected: music detection can now read media sessions. */
+    override fun onListenerConnected() {
+        GlyphRuntime.refreshMusic()
+    }
+
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         if (sbn.packageName == packageName) return
         if (sbn.isOngoing) return

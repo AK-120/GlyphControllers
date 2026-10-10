@@ -68,6 +68,7 @@ object GlyphRuntime {
     private var volumeMonitor: VolumeMonitor? = null
     private var chargingMonitor: ChargingMonitor? = null
     private var screenMonitor: ScreenMonitor? = null
+    private var musicMonitor: MusicMonitor? = null
     private var reconnectJob: Job? = null
     @Volatile private var previewUsers = 0
     private var linkHeld = false
@@ -211,14 +212,21 @@ object GlyphRuntime {
         volumeMonitor = VolumeMonitor(ctx) { pct, prev -> c.onVolumeChanged(pct, prev) }.also { it.start() }
         chargingMonitor = ChargingMonitor(ctx) { info -> c.onChargeChanged(info) }.also { it.start() }
         screenMonitor = ScreenMonitor(ctx) { on -> screenOn.value = on; c.onScreenChanged(on) }.also { it.start() }
+        musicMonitor = MusicMonitor(ctx, { info -> c.onMusicChanged(info) }, { msg ->
+            if (settings.value.musicAodEnabled) report(msg)
+        }).also { it.start() }
         c.refresh()
     }
+
+    /** Re-read the active media sessions (e.g. music switched on, or Notification access just granted). */
+    fun refreshMusic() { musicMonitor?.refresh() }
 
     private fun stop() {
         reconnectJob?.cancel()
         volumeMonitor?.stop(); volumeMonitor = null
         chargingMonitor?.stop(); chargingMonitor = null
         screenMonitor?.stop(); screenMonitor = null
+        musicMonitor?.stop(); musicMonitor = null
         controller?.shutdown()
         // shutdown() runs on the engine thread; release the link after it has had a chance to clear the matrix.
         // If an owner re-attaches within that window, the link is simply kept (linkHeld stays true).

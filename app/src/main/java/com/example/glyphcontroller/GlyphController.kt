@@ -36,6 +36,7 @@ class GlyphController(
     private var volumePrev = 0
     private var volumeUntil = 0L
     private var notifUntil = 0L
+    private var music: MusicInfo? = null
 
     private var volumeJob: Job? = null
     private var notifJob: Job? = null
@@ -82,6 +83,14 @@ class GlyphController(
             }
             // Restart the one-shot even if it is already showing.
             if (currentKey?.startsWith(GlyphState.NOTIFICATION.name) == true) currentKey = null
+            resolve()
+        }
+    }
+
+    /** Track that is playing now, or null when nothing plays. Only affects the AOD (IDLE) picture. */
+    fun onMusicChanged(info: MusicInfo?) {
+        scope.launch {
+            music = info
             resolve()
         }
     }
@@ -149,7 +158,9 @@ class GlyphController(
 
     private data class Plan(
         val state: GlyphState, val anim: GlyphAnimation, val speed: Float, val brightness: Float,
-        val input: Float, val initial: Float
+        val input: Float, val initial: Float,
+        /** Extra identity so a new track restarts the same animation (not part of the animation name). */
+        val keySuffix: String = ""
     )
 
     private fun resolve() {
@@ -179,7 +190,7 @@ class GlyphController(
         renderer.globalBrightness = s.globalBrightness / 100f
         renderer.timeoutCall = s.matrixTimeoutCall
 
-        val key = "${plan.state.name}|${plan.anim.name}"
+        val key = "${plan.state.name}|${plan.anim.name}${plan.keySuffix}"
         if (key == currentKey && engine.isPlaying) {
             // Same animation: just feed it new values (duplicate requests never restart it).
             engine.updateLive(plan.speed, plan.brightness)
@@ -211,10 +222,25 @@ class GlyphController(
                 target, pick(lib, s.notificationAnimation, "notification"), 1f,
                 s.notificationBrightness / 100f, 0f, 0f
             )
-            GlyphState.IDLE -> Plan(
-                target, pick(lib, s.aodAnimation, "aod"), s.aodSpeed, s.aodBrightness / 100f, 0f, 0f
-            )
+            GlyphState.IDLE -> {
+                val m = music
+                if (s.musicAodEnabled && m != null && m.playing) musicPlan(target, m, s)
+                else Plan(target, pick(lib, s.aodAnimation, "aod"), s.aodSpeed, s.aodBrightness / 100f, 0f, 0f)
+            }
         }
+    }
+
+    /** "Title - Artist" scrolls once, then a rotating disc shows for musicNameEverySec; repeat. */
+    private fun musicPlan(target: GlyphState, m: MusicInfo, s: GlyphSettings): Plan {
+        val text = listOf(m.title, m.artist).filter { it.isNotBlank() }.joinToString(" - ")
+        val showName = s.musicShowName && text.isNotBlank()
+        val anim = ProceduralAnimation(
+            "Now playing", "Now playing", "aod", true, 0, 20f, 1f, emptyMap(), "music_aod",
+            Params(mapOf("text" to text, "showName" to showName, "gap" to s.musicNameEverySec.toFloat())), 1500L
+        )
+        // speed stays 1: the scroll timing and the gap are defined in real seconds
+        return Plan(target, anim, 1f, s.aodBrightness / 100f, 0f, 0f,
+            keySuffix = "|$text|$showName|${s.musicNameEverySec}")
     }
 
     private fun pick(lib: AnimationLibrary, name: String, role: String): GlyphAnimation =
