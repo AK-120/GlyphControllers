@@ -1,7 +1,6 @@
 package com.example.glyphcontroller
 
 import kotlin.math.PI
-import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.exp
 import kotlin.math.hypot
@@ -104,37 +103,24 @@ internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
         }
     }
 
+    /** Minimal disc: faint outer ring, one comet with a fading trail sweeping round, a centre dot. */
     private fun disc(t: Float, out: IntArray) {
-        val rot = t * 3.0f                                  // radians per second
-        val labelR = n * 0.17f
-        val holeR = maxOf(0.8f, n * 0.07f)
+        val head = t * 3.0f                                 // comet position, radians (increases clockwise on screen)
+        val twoPi = 2f * PI.toFloat()
+        val bandW = maxOf(1.2f, n * 0.16f)                  // thickness of the lane the comet travels in
         for (y in 0 until n) {
             for (x in 0 until n) {
                 val d = hypot(x - c, y - c)
                 if (d > radius) continue
-                var v = when {
-                    d < holeR -> 0f
-                    d <= labelR -> 190f
-                    d > radius - 1f -> 150f
-                    else -> if (d.toInt() % 2 == 0) 70f else 35f
+                var v = 0f
+                if (d > radius - 1f) v = 28f                // faint outer ring
+                if (d > radius - bandW) {
+                    val lag = (((head - atan2(y - c, x - c)) % twoPi) + twoPi) % twoPi  // 0 at the comet, grows behind it
+                    v = maxOf(v, 255f * exp(-lag / 0.85f))  // smooth gradient trail
                 }
-                if (d > labelR && d < radius - 1f) {
-                    val a = atan2(y - c, x - c)
-                    // brightest highlight on two opposite sides, so the rotation reads clearly
-                    val d1 = angDiff(a, rot)
-                    val d2 = angDiff(a, rot + PI.toFloat())
-                    val w = exp(-(d1 * d1) / 0.12f) + exp(-(d2 * d2) / 0.12f)
-                    v += 185f * w
-                }
+                if (d <= 0.9f) v = 110f                     // centre dot
                 out[y * n + x] = v.toInt().coerceIn(0, 255)
             }
         }
-    }
-
-    private fun angDiff(a: Float, b: Float): Float {
-        var d = (a - b) % (2f * PI.toFloat())
-        if (d > PI) d -= 2f * PI.toFloat()
-        if (d < -PI) d += 2f * PI.toFloat()
-        return abs(d)
     }
 }
