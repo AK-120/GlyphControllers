@@ -240,6 +240,27 @@ private fun GlyphRoot() {
                                     update { it.copy(aodOnlyWhenScreenOff = on) }
                                 }
                             }
+                            Panel("MUSIC") {
+                                ToggleRow("Show playing music", "Only while a song plays; otherwise your AOD above", settings.musicAodEnabled) { on ->
+                                    update { it.copy(musicAodEnabled = on) }
+                                    if (on) GlyphRuntime.refreshMusic()
+                                }
+                                if (settings.musicAodEnabled) {
+                                    ToggleRow("Show song name", "Off = rotating disc only", settings.musicShowName) { on ->
+                                        update { it.copy(musicShowName = on) }
+                                    }
+                                    if (settings.musicShowName) {
+                                        IntSetting("Name scrolls every", settings.musicNameEverySec, 5..60, " s") { v ->
+                                            update { it.copy(musicNameEverySec = v) }
+                                        }
+                                        Small("The name scrolls once, then the disc spins for this long, then it repeats.")
+                                    }
+                                    OutlinedButton(onClick = {
+                                        runCatching { context.startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)) }
+                                    }) { Text("Grant notification access") }
+                                    Small("Android only lets apps read the playing song through Notification access.")
+                                }
+                            }
                         }
 
                         Tab.VOLUME -> {

@@ -26,6 +26,13 @@ data class GlyphSettings(
     val aodBrightness: Int = 60,
     val aodOnlyWhenScreenOff: Boolean = false,
 
+    /** AOD shows the song that is playing (scrolling name + rotating disc) instead of the chosen AOD animation. */
+    val musicAodEnabled: Boolean = false,
+    /** false = rotating disc only, no scrolling name. */
+    val musicShowName: Boolean = true,
+    /** Seconds the disc is shown between two scrolls of the name. */
+    val musicNameEverySec: Int = 15,
+
     val volumeAnimation: String = "volume_pulse",
     val volumeSpeed: Float = 1f,
     val volumeDurationMs: Int = 2000,
@@ -63,6 +70,9 @@ private object K {
     val AOD_SPEED = floatPreferencesKey("aod_speed")
     val AOD_BRIGHTNESS = intPreferencesKey("aod_brightness")
     val AOD_ONLY_SCREEN_OFF = booleanPreferencesKey("aod_only_screen_off")
+    val MUSIC_ENABLED = booleanPreferencesKey("music_aod_enabled")
+    val MUSIC_SHOW_NAME = booleanPreferencesKey("music_show_name")
+    val MUSIC_EVERY = intPreferencesKey("music_name_every_sec")
     val VOL_ANIM = stringPreferencesKey("vol_anim")
     val VOL_SPEED = floatPreferencesKey("vol_speed")
     val VOL_DURATION = intPreferencesKey("vol_duration_ms")
@@ -103,6 +113,9 @@ class SettingsRepository(private val context: Context) {
             aodSpeed = (this[K.AOD_SPEED] ?: d.aodSpeed).coerceIn(0.1f, 4f),
             aodBrightness = (this[K.AOD_BRIGHTNESS] ?: d.aodBrightness).coerceIn(0, 100),
             aodOnlyWhenScreenOff = this[K.AOD_ONLY_SCREEN_OFF] ?: d.aodOnlyWhenScreenOff,
+            musicAodEnabled = this[K.MUSIC_ENABLED] ?: d.musicAodEnabled,
+            musicShowName = this[K.MUSIC_SHOW_NAME] ?: d.musicShowName,
+            musicNameEverySec = (this[K.MUSIC_EVERY] ?: d.musicNameEverySec).coerceIn(5, 60),
             volumeAnimation = this[K.VOL_ANIM] ?: d.volumeAnimation,
             volumeSpeed = (this[K.VOL_SPEED] ?: d.volumeSpeed).coerceIn(0.1f, 4f),
             volumeDurationMs = (this[K.VOL_DURATION] ?: d.volumeDurationMs).coerceIn(500, 10_000),
@@ -130,6 +143,9 @@ class SettingsRepository(private val context: Context) {
         this[K.AOD_SPEED] = s.aodSpeed
         this[K.AOD_BRIGHTNESS] = s.aodBrightness
         this[K.AOD_ONLY_SCREEN_OFF] = s.aodOnlyWhenScreenOff
+        this[K.MUSIC_ENABLED] = s.musicAodEnabled
+        this[K.MUSIC_SHOW_NAME] = s.musicShowName
+        this[K.MUSIC_EVERY] = s.musicNameEverySec
         this[K.VOL_ANIM] = s.volumeAnimation
         this[K.VOL_SPEED] = s.volumeSpeed
         this[K.VOL_DURATION] = s.volumeDurationMs
