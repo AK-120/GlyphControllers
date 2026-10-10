@@ -246,14 +246,22 @@ private fun GlyphRoot() {
                                     if (on) GlyphRuntime.refreshMusic()
                                 }
                                 if (settings.musicAodEnabled) {
-                                    ToggleRow("Show song name", "Off = rotating disc only", settings.musicShowName) { on ->
+                                    Small("PATTERN")
+                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        MusicStyle.entries.forEach { st ->
+                                            GChip(st.label.uppercase(), settings.musicStyle == st) {
+                                                update { it.copy(musicStyle = st) }
+                                            }
+                                        }
+                                    }
+                                    ToggleRow("Show song name", "Off = pattern only, no scrolling name", settings.musicShowName) { on ->
                                         update { it.copy(musicShowName = on) }
                                     }
                                     if (settings.musicShowName) {
                                         IntSetting("Name scrolls every", settings.musicNameEverySec, 5..60, " s") { v ->
                                             update { it.copy(musicNameEverySec = v) }
                                         }
-                                        Small("The name scrolls once, then the disc spins for this long, then it repeats.")
+                                        Small("The name scrolls once, then the pattern plays for this long, then it repeats.")
                                     }
                                     OutlinedButton(onClick = {
                                         runCatching { context.startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)) }

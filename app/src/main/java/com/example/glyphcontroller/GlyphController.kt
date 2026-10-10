@@ -236,11 +236,12 @@ class GlyphController(
         val showName = s.musicShowName && text.isNotBlank()
         val anim = ProceduralAnimation(
             "Now playing", "Now playing", "aod", true, 0, 20f, 1f, emptyMap(), "music_aod",
-            Params(mapOf("text" to text, "showName" to showName, "gap" to s.musicNameEverySec.toFloat())), 1500L
+            Params(mapOf("text" to text, "showName" to showName, "gap" to s.musicNameEverySec.toFloat(),
+                "style" to s.musicStyle.key)), 1500L
         )
         // speed stays 1: the scroll timing and the gap are defined in real seconds
         return Plan(target, anim, 1f, s.aodBrightness / 100f, 0f, 0f,
-            keySuffix = "|$text|$showName|${s.musicNameEverySec}")
+            keySuffix = "|$text|$showName|${s.musicNameEverySec}|${s.musicStyle.key}")
     }
 
     private fun pick(lib: AnimationLibrary, name: String, role: String): GlyphAnimation =

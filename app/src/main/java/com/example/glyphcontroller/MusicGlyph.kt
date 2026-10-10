@@ -2,8 +2,20 @@ package com.example.glyphcontroller
 
 import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.abs
 import kotlin.math.exp
+import kotlin.math.floor
 import kotlin.math.hypot
+import kotlin.math.sin
+
+/** Picture shown between name scrolls (and alone when the name is off). */
+enum class MusicStyle(val key: String, val label: String) {
+    DISC("disc", "Disc"), BARS("bars", "Bars"), WAVE("wave", "Wave"), PULSE("pulse", "Pulse");
+
+    companion object {
+        fun fromKey(key: String) = entries.firstOrNull { it.key == key } ?: DISC
+    }
+}
 
 /** Tiny 3x5 pixel font used to scroll song names across the matrix. */
 internal object PixelFont {
@@ -60,13 +72,14 @@ internal object PixelFont {
 }
 
 /**
- * Music AOD: scrolls "Title - Artist" once, then shows a rotating vinyl disc for [gap] seconds, and repeats.
- * With showName = false (or no title) it only shows the rotating disc.
+ * Music AOD: scrolls "Title - Artist" once, then shows the chosen [MusicStyle] picture for [gap] seconds, and
+ * repeats. With showName = false (or no title) it only shows the picture.
  *
- * params: text (string), showName (bool), gap (seconds the disc is shown between scrolls, default 15)
+ * params: text (string), showName (bool), style ("disc"|"bars"|"wave"|"pulse"), gap (seconds, default 15)
  */
 internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
     private val showName = p.b("showName", true) && p.s("text", "").isNotBlank()
+    private val style = MusicStyle.fromKey(p.s("style", "disc"))
     private val gap = p.f("gap", 15f).coerceIn(1f, 120f)
     private val cols = PixelFont.columns(p.s("text", ""))
     private val scale = if (n >= 20) 2 else 1
@@ -80,10 +93,10 @@ internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
 
     override fun render(timeSec: Float, dtSec: Float, input: Float, out: IntArray) {
         java.util.Arrays.fill(out, 0)
-        if (!showName) { disc(timeSec, out); return }
+        if (!showName) { art(timeSec, out); return }
         val cycle = scrollSec + gap
         val t = timeSec % cycle
-        if (t < scrollSec) text(t, out) else disc(t - scrollSec, out)
+        if (t < scrollSec) text(t, out) else art(t - scrollSec, out)
     }
 
     private fun text(t: Float, out: IntArray) {
@@ -100,6 +113,15 @@ internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
                 if (hypot(x - c, py - c) > radius) continue
                 out[py * n + x] = 255
             }
+        }
+    }
+
+    private fun art(t: Float, out: IntArray) {
+        when (style) {
+            MusicStyle.DISC -> disc(t, out)
+            MusicStyle.BARS -> bars(t, out)
+            MusicStyle.WAVE -> wave(t, out)
+            MusicStyle.PULSE -> pulse(t, out)
         }
     }
 
@@ -120,6 +142,62 @@ internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
                 }
                 if (d <= 0.9f) v = 110f                     // centre dot
                 out[y * n + x] = v.toInt().coerceIn(0, 255)
+            }
+        }
+    }
+
+    /** A few equaliser bars that grow from the middle line; brighter towards the tips. */
+    private fun bars(t: Float, out: IntArray) {
+        val count = 5
+        val pitch = 2 * scale
+        val x0 = c - (count - 1) / 2f * pitch
+        for (k in 0 until count) {
+            val v = ((sin(t * (2.3f + 0.9f * k) + k * 1.3f) + sin(t * (3.1f - 0.4f * k) + k * 2.1f)) / 4f + 0.5f)
+                .coerceIn(0.12f, 1f)
+            val half = (v * radius * 0.7f).coerceAtLeast(0.5f)
+            for (w in 0 until scale) {
+                val x = (x0 + k * pitch).toInt() + w
+                if (x !in 0 until n) continue
+                for (y in 0 until n) {
+                    val dy = abs(y - c)
+                    if (dy > half || hypot(x - c, y - c) > radius) continue
+                    out[y * n + x] = (90f + 165f * (dy / half)).toInt().coerceIn(0, 255)
+                }
+            }
+        }
+    }
+
+    /** One travelling sine line, anti-aliased over two pixels per column (smooth gradient, very few LEDs). */
+    private fun wave(t: Float, out: IntArray) {
+        val amp = n * 0.22f
+        val lambda = n * 0.9f
+        for (x in 0 until n) {
+            val yf = c + amp * sin(2f * PI.toFloat() * x / lambda - t * 3.2f)
+            val y0 = floor(yf).toInt()
+            val f = yf - y0
+            for (k in 0..1) {
+                val yy = y0 + k
+                val w = if (k == 0) 1f - f else f
+                if (yy !in 0 until n || hypot(x - c, yy - c) > radius) continue
+                val i = yy * n + x
+                out[i] = maxOf(out[i], (255f * w).toInt())
+            }
+        }
+    }
+
+    /** Rings expanding from a small centre dot and fading out, like a beat. */
+    private fun pulse(t: Float, out: IntArray) {
+        for (y in 0 until n) {
+            for (x in 0 until n) {
+                val d = hypot(x - c, y - c)
+                if (d > radius) continue
+                var v = if (d < 0.6f) 200f else 0f
+                for (k in 0..1) {
+                    val phase = (t * 0.7f + k * 0.5f) % 1f
+                    val r = phase * radius
+                    v = maxOf(v, 255f * (1f - phase) * exp(-((d - r) * (d - r)) / 0.35f))
+                }
+                out[y * n + x] = if (v < 35f) 0 else v.toInt().coerceIn(0, 255)   // drop the faint tail: fewer LEDs
             }
         }
     }
