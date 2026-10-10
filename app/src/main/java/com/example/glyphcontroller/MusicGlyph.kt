@@ -202,3 +202,47 @@ internal class MusicAod(p: Params, private val n: Int) : ProceduralGenerator {
         }
     }
 }
+
+/**
+ * Volume bars: the same five bars as the music pattern (grow from the middle line, brighter towards the tips),
+ * but their height follows the volume level and they dance on top of it.
+ * params: smoothMs (level easing), jitterSpeed, fixed (0..1 constant level, used by the 100% variant)
+ */
+internal class VolumeBars(p: Params, private val n: Int) : ProceduralGenerator {
+    private val smoothSec = p.f("smoothMs", 200f).coerceAtLeast(1f) / 1000f
+    private val jitter = p.f("jitterSpeed", 1f)
+    private val fixed = if (p.has("fixed")) p.f("fixed", 1f) else -1f
+    private val scale = if (n >= 20) 2 else 1
+    private val c = (n - 1) / 2f
+    private val radius = n / 2f - 0.15f
+    private var level = 0f
+
+    override fun start(initialInput: Float) {
+        level = (if (fixed >= 0f) fixed else initialInput).coerceIn(0f, 1f)
+    }
+
+    override fun render(timeSec: Float, dtSec: Float, input: Float, out: IntArray) {
+        java.util.Arrays.fill(out, 0)
+        val target = (if (fixed >= 0f) fixed else input).coerceIn(0f, 1f)
+        level += (target - level) * (1f - exp(-dtSec / smoothSec))
+        if (abs(target - level) < 0.0005f) level = target
+        val t = timeSec * jitter
+        val count = 5
+        val pitch = 2 * scale
+        val x0 = c - (count - 1) / 2f * pitch
+        for (k in 0 until count) {
+            val w = 0.55f + 0.45f * (0.5f * sin(t * (2.3f + 0.9f * k) + k * 1.3f) +
+                0.5f * sin(t * (3.1f - 0.4f * k) + k * 2.1f))
+            val half = if (level < 0.02f) 0.5f else maxOf(0.8f, level * radius * w)
+            for (wd in 0 until scale) {
+                val x = (x0 + k * pitch).toInt() + wd
+                if (x !in 0 until n) continue
+                for (y in 0 until n) {
+                    val dy = abs(y - c)
+                    if (dy > half || hypot(x - c, y - c) > radius) continue
+                    out[y * n + x] = (90f + 165f * (dy / half)).toInt().coerceIn(0, 255)
+                }
+            }
+        }
+    }
+}

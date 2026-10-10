@@ -28,7 +28,7 @@ object ProceduralGenerators {
     val NAMES = setOf(
         "level_fill", "charge_flow", "breathing_ring", "orbit", "ripple",
         "ring_gauge", "eq_bars", "radial_fill", "signal_steps", "speaker", "spiral_fill", "charge_percent", "boost",
-        "music_aod"
+        "music_aod", "volume_bars"
     )
 
     fun create(name: String, p: Params, n: Int): ProceduralGenerator? = when (name) {
@@ -46,6 +46,7 @@ object ProceduralGenerators {
         "charge_percent" -> ChargePercent(p, n)
         "boost" -> Boost(p, n).takeIf { it.valid }
         "music_aod" -> MusicAod(p, n)
+        "volume_bars" -> VolumeBars(p, n)
         else -> null
     }
 }
