@@ -152,7 +152,7 @@ private fun QuickMenu(onClose: () -> Unit, onOpenApp: () -> Unit) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    Text("Glyph Controller", color = Pal.text, fontSize = 15.sp)
+                    Text("Glyphic", color = Pal.text, fontSize = 15.sp)
                     Text("Master switch", color = Pal.dim, fontSize = 11.sp)
                 }
                 Switch(
