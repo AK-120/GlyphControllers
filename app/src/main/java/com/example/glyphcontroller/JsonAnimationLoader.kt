@@ -73,6 +73,36 @@ object JsonAnimationLoader {
         }
     }
 
+    /** An imported (user) animation file and the animation names it defines. */
+    data class UserFile(val name: String, val animations: List<String>)
+
+    /** Lists the imported JSON files in the user animation directory (bundled assets are never listed). */
+    fun listUserFiles(context: Context): List<UserFile> {
+        val files = runCatching {
+            userDir(context).listFiles { f -> f.isFile && f.extension.equals("json", true) }?.sortedBy { it.name }
+        }.getOrNull() ?: return emptyList()
+        return files.map { f ->
+            val names = runCatching {
+                val keys = JSONObject(f.readText()).optJSONObject("animations")?.keys()
+                if (keys == null) emptyList() else keys.asSequence().toList()
+            }.getOrDefault(emptyList())
+            UserFile(f.name, names)
+        }
+    }
+
+    /** Deletes one imported file from the user animation directory. Returns an error message or null. */
+    fun deleteUserFile(context: Context, fileName: String): String? {
+        return try {
+            val dir = userDir(context).canonicalFile
+            val target = File(dir, fileName).canonicalFile
+            if (target.parentFile != dir) return "Refusing to delete outside the animations folder."
+            if (!target.exists()) return null
+            if (target.delete()) null else "Could not delete $fileName."
+        } catch (t: Throwable) {
+            "Delete failed: ${t.message}"
+        }
+    }
+
     // ---------------------------------------------------------------- parsing
 
     private fun parseInto(
