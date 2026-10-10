@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Glyph Controller</string>
-    <string name="toy_name">Glyph Controller AOD</string>
+    <string name="app_name">Glyphic</string>
+    <string name="toy_name">Glyphic AOD</string>
     <string name="toy_summary">Custom always-on animation that reacts to volume and charging.</string>
-    <string name="notif_channel_name">Glyph controller status</string>
-    <string name="notif_title">Glyph controller active</string>
+    <string name="notif_channel_name">Glyphic status</string>
+    <string name="notif_title">Glyphic active</string>
     <string name="notif_text">Driving the Glyph Matrix</string>
     <string name="notif_action_stop">Turn off</string>
     <string name="widget_label">Glyph AOD</string>
