@@ -89,25 +89,48 @@ object JsonAnimationLoader {
     }
 
     /**
-     * Deletes ONE imported animation by name. It is removed from the imported file that defines it; if that
-     * leaves the file with no animations, the file itself is removed. Returns an error message or null.
+     * Deletes ONE imported animation by name, together with the companion "variants" it owns (e.g. the "max" /
+     * "full" / "fast" looks of volume and charging glyphs) unless another imported animation still uses them.
+     * Files left with no animations are removed. Returns an error message or null.
      */
     fun deleteUserAnimation(context: Context, name: String): String? {
         return try {
-            var found = false
-            for (f in userJsonFiles(context)) {
-                val root = runCatching { JSONObject(f.readText()) }.getOrNull() ?: continue
-                val anims = root.optJSONObject("animations") ?: continue
-                if (!anims.has(name)) continue
-                found = true
-                anims.remove(name)
-                if (anims.length() == 0) {
-                    if (!f.delete()) return "Could not delete ${f.name}."
-                } else {
-                    f.writeText(root.toString(2))
+            val docs = userJsonFiles(context).mapNotNull { f ->
+                runCatching { f to JSONObject(f.readText()) }.getOrNull()
+            }.filter { it.second.optJSONObject("animations") != null }
+            val owner = docs.filter { it.second.optJSONObject("animations")!!.has(name) }
+            if (owner.isEmpty()) return "'$name' is not an imported animation."
+
+            val toRemove = hashSetOf(name)
+            for ((_, root) in owner) {
+                root.optJSONObject("animations")!!.optJSONObject(name)?.optJSONObject("variants")?.let { v ->
+                    for (k in v.keys()) v.optString(k).takeIf { it.isNotBlank() }?.let { toRemove += it }
                 }
             }
-            if (found) null else "'$name' is not an imported animation."
+            // Keep a variant that some animation we are NOT deleting still points at.
+            var changed = true
+            while (changed) {
+                changed = false
+                for ((_, root) in docs) {
+                    val anims = root.optJSONObject("animations") ?: continue
+                    for (key in anims.keys()) {
+                        if (key in toRemove) continue
+                        val v = anims.optJSONObject(key)?.optJSONObject("variants") ?: continue
+                        for (k in v.keys()) if (toRemove.remove(v.optString(k))) changed = true
+                    }
+                }
+            }
+            toRemove += name // the requested glyph is always deleted
+
+            for ((f, root) in docs) {
+                val anims = root.optJSONObject("animations") ?: continue
+                var touched = false
+                for (key in toRemove) if (anims.has(key)) { anims.remove(key); touched = true }
+                if (!touched) continue
+                if (anims.length() == 0) { if (!f.delete()) return "Could not delete ${f.name}." }
+                else f.writeText(root.toString(2))
+            }
+            null
         } catch (t: Throwable) {
             "Delete failed: ${t.message}"
         }

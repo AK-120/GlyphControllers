@@ -73,15 +73,15 @@ internal fun Panel(
 
 /** Pill button / filter chip. */
 @Composable
-internal fun GChip(text: String, selected: Boolean, danger: Boolean = false, onClick: () -> Unit) {
+internal fun GChip(text: String, selected: Boolean, onClick: () -> Unit) {
     val shape = RoundedCornerShape(50)
     Text(
-        text, color = if (danger) Color(0xFFFF8A8F) else if (selected) Pal.onAccent else Pal.dim, fontSize = 11.sp,
+        text, color = if (selected) Pal.onAccent else Pal.dim, fontSize = 11.sp,
         fontFamily = FontFamily.Monospace, letterSpacing = 1.sp,
         modifier = Modifier
             .clip(shape)
             .background(if (selected) Pal.accent else Color.Transparent)
-            .border(BorderStroke(1.dp, if (danger) Color(0x66FF8A8F) else if (selected) Pal.accent else Pal.border), shape)
+            .border(BorderStroke(1.dp, if (selected) Pal.accent else Pal.border), shape)
             .clickable(onClick = onClick)
             .padding(horizontal = 12.dp, vertical = 7.dp)
     )
