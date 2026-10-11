@@ -1,15 +1,11 @@
-# Glyphic
+# Dotwave
 
 **Custom Glyph Matrix animations for Nothing phones: always-on display, volume, charging, notifications and now-playing music.**
 
-Glyphic drives the **physical 13×13 Glyph Matrix** through Nothing's official Glyph Matrix SDK.
+Dotwave drives the **physical 13×13 Glyph Matrix** through Nothing's official Glyph Matrix SDK.
 Nothing is drawn on the phone screen; the in-app preview is only a live mirror of the matrix.
 
-> ### 🤖 This app is vibe-coded
-> Glyphic was built almost entirely by describing what I wanted to an AI coding assistant (Claude) and iterating on
-> the result, not by hand-writing every line. It works on my phone, but it is hobby software: expect rough edges,
-> read the code before trusting it, and please open an issue if something breaks.
-> Not affiliated with or endorsed by Nothing Technology Limited.
+*Vibe-coded with AI assistance (Claude). Not affiliated with or endorsed by Nothing Technology Limited.*
 
 **Developed for:** Nothing Phone (4a) Pro (13×13 matrix, Nothing OS build 20250801 or newer).
 **Not tested on other models.** The matrix size is read at runtime, but the SDK link is device-specific.
@@ -19,7 +15,7 @@ Nothing is drawn on the phone screen; the in-app preview is only a live mirror o
 ## Features
 
 ### Animations for every situation
-| Situation | What Glyphic does |
+| Situation | What Dotwave does |
 |---|---|
 | **AOD (idle)** | Plays an animation of your choice whenever nothing else is happening (optionally only with the screen off). |
 | **Volume** | Shows the media volume level on the matrix when you press the volume keys; special look at 100 %. |
@@ -62,8 +58,8 @@ There is no Play Store build. You build it yourself:
 3. Open this folder and let Gradle sync (or run `gradle wrapper --gradle-version 8.9`).
 4. On the phone: enable Developer options + USB debugging; Nothing OS build 20250801+ (20250829+ for the "Open Glyph Toys manager" button).
 5. Run from Android Studio, or `./gradlew installDebug`.
-6. In the app: switch **Glyphic** on, allow notifications, and use the **TEST** buttons.
-7. Optional always-on path: *Settings › Glyph Interface › Flip to Glyph › Always-on Glyph Toy* → choose **Glyphic AOD**.
+6. In the app: switch **Dotwave** on, allow notifications, and use the **TEST** buttons.
+7. Optional always-on path: *Settings › Glyph Interface › Flip to Glyph › Always-on Glyph Toy* → choose **Dotwave AOD**.
 8. Optional music / notification flash: *Setup › Grant notification access*.
 
 > The Android package id is still `com.example.glyphcontroller` (kept so existing installs and settings survive the rename).
@@ -79,7 +75,7 @@ There is no Play Store build. You build it yourself:
 - **Settings are all in the app**: nothing needs editing in code.
 
 ### Music mode notes
-Android only lets an app read the playing song through **Notification access**, so Glyphic needs that permission for
+Android only lets an app read the playing song through **Notification access**, so Dotwave needs that permission for
 music (and notification flash). It reads only the active media session's title and artist, never notification content.
 Titles in scripts the tiny pixel font does not cover (Hindi, Japanese, ...) show as a small ▪-style mark.
 
@@ -103,7 +99,7 @@ Sources: Nothing's official `GlyphMatrix-Developer-Kit` README and a `javap` dum
 ### Hard limits you cannot code around
 - **Glyph Toys outrank apps.** If the Glyph button / toy carousel is active, it overrides your content.
 - **Phone (4a) Pro supports only AOD toys** (no Glyph Touch).
-- **No global matrix-brightness API.** Brightness exists only per `GlyphMatrixObject` (0-255). Glyphic computes
+- **No global matrix-brightness API.** Brightness exists only per `GlyphMatrixObject` (0-255). Dotwave computes
   `255 × global × animation × frame × state` and sets it on the object.
 - **No public "volume changed" callback**, and **no public "fast charging" flag** in Android (see [Detection](#detection-details)).
 - A GitHub issue against the official example reports the matrix going dark after ~3-4 minutes on Phone (3) until
@@ -216,7 +212,32 @@ adb push my.json /sdcard/Android/data/com.example.glyphcontroller/files/animatio
 - **Logo**: three `<activity-alias>` launcher entries; choosing a logo enables one and disables the others. The launcher decides when the home screen refreshes, so it can lag a few seconds.
 
 ## Contributing / feedback
-Issues and pull requests are welcome, especially reports from other Nothing models. Since this is vibe-coded, "this looks wrong" is a perfectly good bug report.
+Issues and pull requests are welcome, especially reports from other Nothing models.
 
-## Licence
-No licence has been chosen yet. Add one before accepting contributions. The Nothing Glyph SDK is **not** included and remains under Nothing's own terms.
+## Licence and credits
+
+**Dotwave's own code is released under the [MIT License](LICENSE)** (c) 2026 AK-120: use, copy, modify and share it freely,
+keeping the copyright notice.
+
+**The MIT licence covers this project only, not the Nothing SDK.** The Glyph Matrix SDK is *not* included in this
+repository. You download `glyph-matrix-sdk-2.0.aar` yourself from Nothing's
+[GlyphMatrix-Developer-Kit](https://github.com/Nothing-Developer-Programme/GlyphMatrix-Developer-Kit) and it stays under
+Nothing's own licence, which (among other things) does not allow redistributing the SDK and requires written permission
+from Nothing for commercial use. Read their `LICENSE.md` before you build or share an APK. Questions to Nothing: `GDKsupport@nothing.tech`.
+
+### Third-party APIs, SDKs and libraries used
+| Component | Used for | Licence |
+|---|---|---|
+| [Nothing Glyph Matrix SDK](https://github.com/Nothing-Developer-Programme/GlyphMatrix-Developer-Kit) (`GlyphMatrixManager`, `GlyphMatrixFrame`, ...) | Drawing on the physical Glyph Matrix, Glyph Toy API | Nothing's SDK licence (not redistributed here) |
+| Android platform APIs (`MediaSessionManager`, `NotificationListenerService`, `AudioManager`, `BatteryManager`, foreground services, `AppWidgetManager`) | Music, notifications, volume, charging, widget | Android Open Source Project, Apache 2.0 |
+| [Jetpack Compose](https://developer.android.com/jetpack/compose) and Material 3 | UI | Apache 2.0 |
+| AndroidX Core, Activity, Lifecycle, DataStore | App plumbing, settings storage | Apache 2.0 |
+| [Kotlin](https://kotlinlang.org) and kotlinx.coroutines | Language, concurrency | Apache 2.0 |
+
+"Nothing" and "Glyph" are trademarks of Nothing Technology Limited. Dotwave is an independent hobby project and is not
+affiliated with, sponsored by or endorsed by Nothing.
+
+Built by AK-120, vibe-coded with an AI assistant ([Claude](https://claude.ai), by Anthropic).
+
+## Releasing
+See [RELEASING.md](RELEASING.md).

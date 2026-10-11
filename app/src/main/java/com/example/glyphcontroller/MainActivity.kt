@@ -181,7 +181,7 @@ private fun GlyphRoot() {
                                 Text("SDK ${link.name}: $linkDetail", color = Pal.dim, fontSize = 11.sp, lineHeight = 15.sp)
                             }
                             Panel("CONTROL") {
-                                ToggleRow("Glyphic", "Master switch", settings.enabled) { on ->
+                                ToggleRow("Dotwave", "Master switch", settings.enabled) { on ->
                                     update { it.copy(enabled = on) }
                                     if (on) {
                                         if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
@@ -384,6 +384,11 @@ private fun GlyphRoot() {
                                     MatrixTimeoutCall.entries.map { it to it.label }, settings.matrixTimeoutCall) { m ->
                                     update { it.copy(matrixTimeoutCall = m) }
                                 }
+                            }
+                            Panel("ABOUT") {
+                                Text("Dotwave", color = Pal.text, fontSize = 15.sp)
+                                Small("Vibe-coded with AI assistance. Free and open source (MIT). " +
+                                    "Uses Nothing's Glyph Matrix SDK under Nothing's own licence. Not affiliated with Nothing.")
                             }
                         }
                     }
