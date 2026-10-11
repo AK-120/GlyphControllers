@@ -5,11 +5,7 @@
 Dotwave drives the **physical 13×13 Glyph Matrix** through Nothing's official Glyph Matrix SDK.
 Nothing is drawn on the phone screen; the in-app preview is only a live mirror of the matrix.
 
-> ### 🤖 This app is vibe-coded
-> Dotwave was built almost entirely by describing what I wanted to an AI coding assistant (Claude) and iterating on
-> the result, not by hand-writing every line. It works on my phone, but it is hobby software: expect rough edges,
-> read the code before trusting it, and please open an issue if something breaks.
-> Not affiliated with or endorsed by Nothing Technology Limited.
+*Vibe-coded with AI assistance (Claude). Not affiliated with or endorsed by Nothing Technology Limited.*
 
 **Developed for:** Nothing Phone (4a) Pro (13×13 matrix, Nothing OS build 20250801 or newer).
 **Not tested on other models.** The matrix size is read at runtime, but the SDK link is device-specific.
@@ -216,7 +212,7 @@ adb push my.json /sdcard/Android/data/com.example.glyphcontroller/files/animatio
 - **Logo**: three `<activity-alias>` launcher entries; choosing a logo enables one and disables the others. The launcher decides when the home screen refreshes, so it can lag a few seconds.
 
 ## Contributing / feedback
-Issues and pull requests are welcome, especially reports from other Nothing models. Since this is vibe-coded, "this looks wrong" is a perfectly good bug report.
+Issues and pull requests are welcome, especially reports from other Nothing models.
 
 ## Licence and credits
 
@@ -241,7 +237,7 @@ from Nothing for commercial use. Read their `LICENSE.md` before you build or sha
 "Nothing" and "Glyph" are trademarks of Nothing Technology Limited. Dotwave is an independent hobby project and is not
 affiliated with, sponsored by or endorsed by Nothing.
 
-Built by AK-120 with the help of an AI coding assistant ([Claude](https://claude.ai), by Anthropic). See the vibe-coded note at the top.
+Built by AK-120, vibe-coded with an AI assistant ([Claude](https://claude.ai), by Anthropic).
 
 ## Releasing
 See [RELEASING.md](RELEASING.md).
