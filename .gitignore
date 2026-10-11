@@ -19,3 +19,7 @@ build/
 captures/
 .externalNativeBuild/
 .cxx/
+# Release signing: never commit keys or passwords
+*.jks
+*.keystore
+keystore.properties

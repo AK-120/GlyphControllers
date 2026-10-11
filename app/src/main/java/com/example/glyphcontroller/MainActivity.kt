@@ -181,7 +181,7 @@ private fun GlyphRoot() {
                                 Text("SDK ${link.name}: $linkDetail", color = Pal.dim, fontSize = 11.sp, lineHeight = 15.sp)
                             }
                             Panel("CONTROL") {
-                                ToggleRow("Glyphic", "Master switch", settings.enabled) { on ->
+                                ToggleRow("Dotwave", "Master switch", settings.enabled) { on ->
                                     update { it.copy(enabled = on) }
                                     if (on) {
                                         if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
