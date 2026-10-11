@@ -3,11 +3,11 @@
 > **Read this first: the Nothing SDK licence limits what you can publish.**
 > Nothing's `LICENSE.md` for the Glyph Matrix SDK does not allow redistributing the SDK (clause 2.1(c)) and requires
 > written permission for commercial use (clause 2.2). A prebuilt APK contains the SDK, so publishing one may count as
-> redistribution. This is not legal advice. Ask Nothing (`GDKsupport@nothing.tech`) before you publish an APK or an
-> app-store listing, and keep the app free, with no ads or payments, unless they say otherwise.
+> redistribution. This is not legal advice. Ask Nothing (`GDKsupport@nothing.tech`) before you publish an APK,
+> and keep the app free, with no ads or payments, unless they say otherwise.
 > The MIT licence in this repo covers **your code only**.
 
-There are three levels. Start with A; do B or C only after you have an answer from Nothing.
+There are two levels. Start with A; do B only after you have an answer from Nothing. (Google Play is not planned.)
 
 ## A. Source-only release (safe, do this first)
 
@@ -54,19 +54,6 @@ No SDK is shipped, so nothing in the licence is touched. People build it themsel
    sha256sum app-release.apk > app-release.apk.sha256
    ```
    Rename the APK to something clear, e.g. `Dotwave-1.0.0.apk`. In the notes say which phone and Nothing OS build you tested on.
-
-## C. Google Play (needs Nothing's OK, plus extra work)
-
-- **Change the application id first.** Play rejects `com.example.*`. In `app/build.gradle.kts` set `applicationId` to something
-  you own (e.g. `io.github.ak120.dotwave`). `namespace` can stay as it is. Note: a new id is a new app, so existing testers must reinstall.
-- Google Play developer account (one-time fee), then **App bundle**: `./gradlew bundleRelease` and upload the `.aab`
-  (use Play App Signing).
-- **Privacy policy URL** (required): say plainly that the app reads the title and artist of the playing media session and
-  that notification access is only used to detect that a notification arrived and the playing song, nothing is stored or sent anywhere.
-- **Declarations:** foreground service type `specialUse` (explain why in the form), notification-listener / media-session
-  access, and the data-safety form (no data collected). Expect extra review for sensitive permissions.
-- Set the target audience, content rating, store listing text and screenshots, then start with **Internal testing > Closed testing** before production.
-- Because Nothing's SDK licence forbids commercial use without permission, keep it free and ask Nothing first.
 
 ## Release checklist
 - [ ] Version bumped (`versionCode` and `versionName`)
