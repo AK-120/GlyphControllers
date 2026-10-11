@@ -385,6 +385,13 @@ private fun GlyphRoot() {
                                     update { it.copy(matrixTimeoutCall = m) }
                                 }
                             }
+                            Panel("ABOUT") {
+                                Text("Dotwave", color = Pal.text, fontSize = 15.sp)
+                                Small("Vibe-coded: built by describing ideas to an AI assistant (Claude) and iterating. " +
+                                    "It is hobby software, so expect rough edges.")
+                                Small("Free and open source (MIT). Uses Nothing's Glyph Matrix SDK under Nothing's own licence. " +
+                                    "Not affiliated with or endorsed by Nothing.")
+                            }
                         }
                     }
                 }
