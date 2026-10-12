@@ -155,7 +155,7 @@ private fun GlyphRoot() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(Modifier.weight(1f)) {
-                Text("GLYPH", color = Pal.text, fontSize = 26.sp, fontFamily = FontFamily.Monospace,
+                Text("DOTWAVE", color = Pal.text, fontSize = 26.sp, fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold, letterSpacing = 6.sp)
                 Text(
                     if (!settings.enabled) "OFF" else if (animName.isEmpty()) "READY" else "${stateTitle(state)} · $shownLabel",

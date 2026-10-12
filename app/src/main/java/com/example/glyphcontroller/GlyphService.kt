@@ -137,7 +137,7 @@ class GlyphService : Service() {
     companion object {
         private const val CHANNEL_ID = "glyph_status"
         private const val NOTIF_ID = 1
-        private const val ACTION_STOP = "com.example.glyphcontroller.STOP"
+        private const val ACTION_STOP = "dotwave.action.STOP"
 
         fun start(context: Context) {
             runCatching {
