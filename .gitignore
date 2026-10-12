@@ -18,7 +18,7 @@ build/
 **/build/
 captures/
 .externalNativeBuild/
-.cxx/
+.cxx/ 
 # Release signing: never commit keys or passwords
 *.jks
 *.keystore

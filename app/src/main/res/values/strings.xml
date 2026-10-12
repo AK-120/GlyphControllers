@@ -7,8 +7,8 @@
     <string name="notif_title">Dotwave active</string>
     <string name="notif_text">Driving the Glyph Matrix</string>
     <string name="notif_action_stop">Turn off</string>
-    <string name="widget_label">Glyph AOD</string>
-    <string name="widget_brand">GLYPH</string>
+    <string name="widget_label">Dotwave AOD</string>
+    <string name="widget_brand">Dotwave</string>
     <string name="widget_desc">Live dot-matrix mirror of the Glyph Matrix. Tap for quick setup.</string>
-    <string name="quick_label">Glyph quick setup</string>
+    <string name="quick_label">Dotwave quick setup</string>
 </resources>

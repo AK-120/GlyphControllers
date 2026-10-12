@@ -1,3 +1,4 @@
+import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,7 +7,7 @@ plugins {
 
 // Optional release signing: create keystore.properties (git-ignored) with storeFile, storePassword, keyAlias, keyPassword.
 // See RELEASING.md. Without it, release builds are simply unsigned.
-val keystoreProps = java.util.Properties().apply {
+val keystoreProps = Properties().apply {
     val f = rootProject.file("keystore.properties")
     if (f.exists()) f.inputStream().use { load(it) }
 }
@@ -16,7 +17,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.glyphcontroller"
+        applicationId = "qd.je.ak120.dotwave"
         // Glyph Matrix app control (setAppMatrixFrame) needs a recent Nothing OS build;
         // the SDK itself supports API 33+, we use 34 for the specialUse foreground service type.
         minSdk = 34
