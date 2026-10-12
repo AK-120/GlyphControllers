@@ -7,8 +7,8 @@ Nothing is drawn on the phone screen; the in-app preview is only a live mirror o
 
 *Vibe-coded with AI assistance (Claude). Not affiliated with or endorsed by Nothing Technology Limited.*
 
-**Developed for:** Nothing Phone (4a) Pro (13×13 matrix, Nothing OS build 20250801 or newer).
-**Not tested on other models.** The matrix size is read at runtime, but the SDK link is device-specific.
+> **Supported device: Nothing Phone (4a) Pro only** (13×13 matrix, Nothing OS build 20250801 or newer).
+> Other Nothing phones are not supported and have not been tested.
 
 ---
 
@@ -212,7 +212,7 @@ adb push my.json /sdcard/Android/data/qd.je.ak120.dotwave/files/animations/
 - **Logo**: three `<activity-alias>` launcher entries; choosing a logo enables one and disables the others. The launcher decides when the home screen refreshes, so it can lag a few seconds.
 
 ## Contributing / feedback
-Issues and pull requests are welcome, especially reports from other Nothing models.
+Issues and pull requests are welcome.
 
 ## Licence and credits
 
