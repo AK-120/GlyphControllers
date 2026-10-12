@@ -207,7 +207,7 @@ adb push my.json /sdcard/Android/data/qd.je.ak120.dotwave/files/animations/
 · `MainActivity.kt` / `QuickMenuActivity.kt` (Compose UI) · `GlyphPicker.kt` (glyph deck, themes) · `GlyphWidget.kt` (home-screen widget) · `IconStyle.kt`
 
 ## Widget, quick setup & logo (details)
-- **Widget**: 2×2 shows the 13×13 dot matrix; wider (about 4×2) adds animation name, state and brightness. It mirrors exactly what is sent to the matrix. A widget is a `RemoteViews` bitmap, not a live view, so it refreshes about twice per second and looks like a slow stepped preview. Nothing is pushed while the screen is off or no widget is placed.
+- **Widget**: 2×2 shows the 13×13 dot matrix; wider (about 4×2) adds animation name, state and brightness. It mirrors exactly what is sent to the matrix. A widget is a `RemoteViews` bitmap, not a live view, so it refreshes up to about 8 times per second (identical frames are skipped) and looks like a stepped preview rather than a true animation. Nothing is pushed while the screen is off or no widget is placed.
 - **Quick setup** (`QuickMenuActivity`): translucent bottom sheet sharing state with the main screen through `GlyphRuntime`.
 - **Logo**: three `<activity-alias>` launcher entries; choosing a logo enables one and disables the others. The launcher decides when the home screen refreshes, so it can lag a few seconds.
 
