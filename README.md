@@ -62,7 +62,7 @@ There is no Play Store build. You build it yourself:
 7. Optional always-on path: *Settings › Glyph Interface › Flip to Glyph › Always-on Glyph Toy* → choose **Dotwave AOD**.
 8. Optional music / notification flash: *Setup › Grant notification access*.
 
-> The Android package id is still `com.example.glyphcontroller` (kept so existing installs and settings survive the rename).
+> The Android app id is `qd.je.ak120.dotwave`. The Kotlin code still lives in the `com.example.glyphcontroller` package (the Gradle `namespace`), which is fine: the two are independent.
 
 ---
 
@@ -147,7 +147,7 @@ GlyphApp ─ GlyphRuntime (process singleton: settings, library, status flows, o
 
 ## JSON animation format
 
-Bundled: `app/src/main/assets/animations/*.json`. Yours: `<Android/data/com.example.glyphcontroller/files>/animations/*.json`
+Bundled: `app/src/main/assets/animations/*.json`. Yours: `<Android/data/qd.je.ak120.dotwave/files>/animations/*.json`
 (or **Setup › Import JSON**). Later files override earlier ones by animation name. Invalid files/animations/frames are
 skipped and listed under **PROBLEMS**, they never crash the app.
 
@@ -191,9 +191,9 @@ animation packs (`pack_*.json`) with `tools/gen_pack.py`.
 ## Debugging
 ```
 adb logcat -s GlyphLink GlyphRenderer GlyphRuntime GlyphMatrixManager
-adb shell dumpsys activity services com.example.glyphcontroller
+adb shell dumpsys activity services qd.je.ak120.dotwave
 adb shell dumpsys battery set ac 1 ; adb shell dumpsys battery set level 42 ; adb shell dumpsys battery reset
-adb push my.json /sdcard/Android/data/com.example.glyphcontroller/files/animations/
+adb push my.json /sdcard/Android/data/qd.je.ak120.dotwave/files/animations/
 ```
 - SDK says **UNSUPPORTED** → `Common.is25111p()` returned false; check you are on a 4a Pro and the system build.
 - Link **CONNECTED** but nothing lights → see "Still worth checking"; try the always-on toy, press the Glyph button to wake the matrix.
