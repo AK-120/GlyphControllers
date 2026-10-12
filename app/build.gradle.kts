@@ -59,6 +59,10 @@ android {
     buildFeatures {
         compose = true
     }
+    lint {
+        // The release-time lint check crashes on very new JDKs (e.g. "25.0.3"); it is not needed to build the APK.
+        checkReleaseBuilds = false
+    }
 }
 
 dependencies {
