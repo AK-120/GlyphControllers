@@ -22,9 +22,10 @@ import android.widget.RemoteViews
  * Tapping it opens [QuickMenuActivity].
  *
  * Widgets are RemoteViews: the launcher cannot run our drawing code, so it cannot animate on its own.
- * While the controller runs and the screen is on, a fresh snapshot is pushed about twice a second
- * (see [INTERVAL_MS]) - it reads as a slow, stepped preview, not a smooth animation. Nothing is pushed
- * with the screen off or when no widget is placed.
+ * While the controller runs and the screen is on, a fresh snapshot is pushed up to about 8 times a second
+ * (see [INTERVAL_MS]) - much smoother than before, but still a stepped preview, not a true animation.
+ * Identical snapshots are skipped, so a static AOD costs almost nothing. Nothing is pushed with the screen
+ * off or when no widget is placed.
  */
 object GlyphWidgets {
     @Volatile var active = false
@@ -38,8 +39,15 @@ object GlyphWidgets {
     private var lastRenderAt = 0L
     private var scheduled = false
 
-    private const val INTERVAL_MS = 500L
-    private const val BITMAP_PX = 168
+    // One reusable bitmap/canvas/paints: updateAppWidget() copies the bitmap into a parcel before it returns.
+    private val bitmap: Bitmap = Bitmap.createBitmap(BITMAP_PX, BITMAP_PX, Bitmap.Config.ARGB_8888)
+    private val canvas = Canvas(bitmap)
+    private val offPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.rgb(34, 34, 34) }
+    private val onPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.WHITE }
+    private var lastKey = 0
+
+    private const val INTERVAL_MS = 120L
+    private const val BITMAP_PX = 144
     private const val GAIN = 1.8f
 
     fun refreshActive(context: Context) {
@@ -83,7 +91,7 @@ object GlyphWidgets {
         }
     }
 
-    fun update(ctx: Context) {
+    fun update(ctx: Context, force: Boolean = false) {
         val mgr = AppWidgetManager.getInstance(ctx)
         val component = ComponentName(ctx, GlyphWidgetProvider::class.java)
         if (mgr.getAppWidgetIds(component).isEmpty()) return
@@ -93,7 +101,7 @@ object GlyphWidgets {
             val on = s.enabled
             val n = GlyphRuntime.matrixSize
             val showing = on && running
-            val bmp = drawMatrix(if (showing) lastPixels else null, n)
+            val pixels = if (showing) lastPixels else null
 
             val animName = GlyphRuntime.activeAnimation.value.ifEmpty { s.aodAnimation }
             val label = GlyphRuntime.library.value[animName]?.label ?: animName
@@ -103,6 +111,11 @@ object GlyphWidgets {
                 GlyphRuntime.activeState.value == GlyphState.IDLE -> "AOD"
                 else -> GlyphRuntime.activeState.value.name
             }
+            // Nothing visible changed since the last push: skip the (comparatively expensive) widget update.
+            val key = java.util.Objects.hash(pixels?.contentHashCode(), showing, label, state, s.globalBrightness)
+            if (!force && key == lastKey) return
+            lastKey = key
+            val bmp = drawMatrix(pixels, n)
             val tap = PendingIntent.getActivity(
                 ctx, 0,
                 Intent(ctx, QuickMenuActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
@@ -127,24 +140,21 @@ object GlyphWidgets {
     }
 
     private fun drawMatrix(px: IntArray?, n: Int): Bitmap {
-        val bmp = Bitmap.createBitmap(BITMAP_PX, BITMAP_PX, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bmp)
+        bitmap.eraseColor(Color.TRANSPARENT)
         val cell = BITMAP_PX / n.toFloat()
-        val off = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.rgb(34, 34, 34) }
-        val on = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.WHITE }
         for (y in 0 until n) {
             for (x in 0 until n) {
                 val cx = (x + 0.5f) * cell
                 val cy = (y + 0.5f) * cell
-                canvas.drawCircle(cx, cy, cell * 0.28f, off)
+                canvas.drawCircle(cx, cy, cell * 0.28f, offPaint)
                 val v = px?.getOrNull(y * n + x) ?: 0
                 if (v > 0) {
-                    on.alpha = (v * GAIN).toInt().coerceIn(40, 255)
-                    canvas.drawCircle(cx, cy, cell * 0.38f, on)
+                    onPaint.alpha = (v * GAIN).toInt().coerceIn(40, 255)
+                    canvas.drawCircle(cx, cy, cell * 0.38f, onPaint)
                 }
             }
         }
-        return bmp
+        return bitmap
     }
 }
 
@@ -165,12 +175,12 @@ class GlyphWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         GlyphRuntime.init(context)
         GlyphWidgets.refreshActive(context)
-        GlyphWidgets.update(context)
+        GlyphWidgets.update(context, force = true)
     }
 
     override fun onAppWidgetOptionsChanged(
         context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, newOptions: android.os.Bundle
     ) {
-        GlyphWidgets.update(context)
+        GlyphWidgets.update(context, force = true)
     }
 }
